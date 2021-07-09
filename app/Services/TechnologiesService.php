@@ -10,7 +10,7 @@ class TechnologiesService{
         return Technologies::all();
     }
 
-    public function createTechnology($request)
+    public function create($request)
     {
         $technology = new Technologies;
         $technologies = Technologies::all();
@@ -20,19 +20,19 @@ class TechnologiesService{
         $technology->save();
     }
 
-    public function getTechnology($id)
+    public function get($id)
     {
        return Technologies::FindOrFail($id);
     }
 
-    public function updateTechnology($request)
+    public function update($request)
     {
         $technology = Technologies::FindOrFail($request->id);
         $technology->name = $request->name;
         $technology->update();
     }
 
-    public function deleteTechnology($id)
+    public function delete($id)
     {
         $technology = Technologies::FindOrFail($id);
         $technology->delete();

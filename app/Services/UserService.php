@@ -10,7 +10,7 @@ class UserService{
         return User::all();
     }
 
-    public function createUser($request)
+    public function create($request)
     {
         $user = new User;
         $user->name = $request->name;
@@ -19,12 +19,12 @@ class UserService{
         $user->save();
     }
 
-    public function getUser($id)
+    public function get($id)
     {
        return User::FindOrFail($id);
     }
 
-    public function updateUser($request)
+    public function update($request)
     {
         $user = User::FindOrFail($request->id);
         $user->name = $request->name;
@@ -33,7 +33,7 @@ class UserService{
         $user->update();
     }
 
-    public function deleteUser($id)
+    public function delete($id)
     {
         $user = User::FindOrFail($id);
         $user->delete();

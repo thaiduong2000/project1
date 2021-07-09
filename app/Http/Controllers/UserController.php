@@ -22,31 +22,30 @@ class UserController extends Controller
         return view('user.index',compact('user'));
     }
 
-    public function viewAddUser()
+    public function viewAdd()
     {
-        $role = Roles::all();
-        return view('user.add_user',compact('role'));
+        $roles = Roles::all();
+        return view('user.add',compact('roles'));
     }
 
-    public function createUser(Request $request){ 
-        $this->userService->createUser($request);
+    public function create(Request $request){ 
+        $this->userService->create($request);
         return back()->with('success','Created Successful!');
     }
 
-    public function getUser($id){
-        $role = Roles::all();
-        $user = $this->userService->getUser($id);
-        return view('user.update_user',compact('user','role'));
-
+    public function get($id){
+        $roles = Roles::all();
+        $user = $this->userService->get($id);
+        return view('user.update',compact('user','roles'));
     }
 
-    public function updateUser(Request $request){
-        $user = $this->userService->updateUser($request);
+    public function update(Request $request){
+        $user = $this->userService->update($request);
         return back()->with('success','Update Successful!');
     }
 
-    public function deleteUser($id){
-        $this->userService->deleteUser($id);
+    public function delete($id){
+        $this->userService->delete($id);
         return back()->with('success','Delete Successful!');
     }
 }
