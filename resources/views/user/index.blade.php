@@ -26,7 +26,7 @@
         <td>{{$item->id_role}}</td>
         <td>
          <div class=d-flex >
-           <a href="{{ route('getUser',$item->id)  }}" class="btn btn-primary me-2">Update</a>
+           <a href="{{ route('viewUpdateUser',$item->id)  }}" class="btn btn-primary me-2">Update</a>
           <form method="POST" action="{{ route('deleteUser',$item->id)  }}">
             @csrf
             {{ method_field('delete')}}

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('id_role')->unsigned()->index();
             $table->foreign('id_role')->references('id')->on('roles');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

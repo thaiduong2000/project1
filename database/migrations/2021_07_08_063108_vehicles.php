@@ -11,16 +11,16 @@ class Vehicles extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('vehicles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('technology_id')->unsigned()->index();
-            $table->foreign('technology_id')->references('id')->on('technologies');
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('vehicles', function (Blueprint $table) {
+    //         $table->increments('id');
+    //         $table->string('name');
+    //         $table->integer('technology_id')->unsigned()->index();
+    //         $table->foreign('technology_id')->references('id')->on('technologies');
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.

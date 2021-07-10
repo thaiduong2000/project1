@@ -24,8 +24,8 @@
         <td>{{$item->name}}</td>
         <td>
           <div class=d-flex >
-           <a href="{{ route('getTechnology', $item->id)  }}" class="btn btn-primary me-2">Update</a>
-           <form method="POST" action="{{ route('getTechnology',$item->id) }}">
+           <a href="{{ route('viewUpdateTechnology', $item->id)  }}" class="btn btn-primary me-2">Update</a>
+           <form method="POST" action="{{ route('viewUpdateTechnology',$item->id) }}">
              @csrf
              {{ method_field('delete')}}
              <button  type="submit" onclick="confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</button>
