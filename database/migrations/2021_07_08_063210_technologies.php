@@ -11,15 +11,15 @@ class Technologies extends Migration
      *
      * @return void
      */
-    // public function up()
-    // {
-    //     Schema::create('technologies', function (Blueprint $table) {
-    //         $table->increments('id');
-    //         $table->string('name');
-    //         $table->String('order_no');
-    //         $table->timestamps();
-    //     });
-    // }
+    public function up()
+    {
+        Schema::create('technologies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->String('order_no');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
