@@ -1,12 +1,20 @@
 <template>
   <div>
     <div class="d-flex justify-content-end">
-      <b-link href="/users/create" class="btn btn-success">Add new</b-link>
+      <router-link to="/users/create" class="btn btn-success">
+        Add new
+      </router-link>
     </div>
-    <ListUser :items="items" />
+    <ListUser
+      :items="items"
+      :fields="fields"
+      :isBusy="isBusy"
+      @onDeleteUser="deleteUser"
+    />
   </div>
 </template>
 <script>
+import axios from "axios";
 import ListUser from "./components/ListUser.vue";
 export default {
   components: {
@@ -14,13 +22,67 @@ export default {
   },
   data() {
     return {
-      items: [
-        { Id: 1, Name: "Dickerson", Roles: "Macdonald", action: "" },
-        { Id: 2, Name: "Larsen", Roles: "Shaw" },
-        { Id: 3, Name: "Geneva", Roles: "Wilson" },
-        { Id: 4, Name: "Jami", Roles: "Carney" },
+      fields: [
+        {
+          key: "id",
+          sortable: true,
+        },
+        {
+          key: "name",
+          sortable: true,
+        },
+        {
+          key: "id_role",
+          label: "Roles",
+          sortable: true,
+        },
+        {
+          key: "action",
+          label: "Actions",
+        },
       ],
+      items: [],
+      isBusy: false,
     };
+  },
+  created() {
+    this.getUser();
+  },
+  methods: {
+    getUser() {
+      this.isBusy = !this.isBusy;
+      axios
+        .get(`/api/users`)
+        .then((response) => {
+          this.items = response.data.data;
+          this.isBusy = !this.isBusy;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    deleteUser(id) {
+      this.$bvModal
+        .msgBoxConfirm("Are you sure delete user?", {
+          title: "Please Confirm",
+          size: "sm",
+          buttonSize: "sm",
+          okVariant: "danger",
+          okTitle: "YES",
+          cancelTitle: "NO",
+          footerClass: "p-2",
+          hideHeaderClose: false,
+          centered: true,
+        })
+        .then((value) => {
+          if (value == true) {
+            axios.delete(`/api/users/` + id).then((res) => {
+              this.getUser();
+            });
+          }
+        });
+    },
   },
 };
 </script>

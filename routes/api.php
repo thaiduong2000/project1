@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\TechnologiesController;
+use App\Http\Controllers\Api\VehiclesController;
+use App\Http\Controllers\Api\RolesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('users', UserController::class);
+Route::resource('technologies', TechnologiesController::class);
+Route::resource('vehicles', VehiclesController::class);
+Route::get('roles', [RolesController::class, 'index']);
