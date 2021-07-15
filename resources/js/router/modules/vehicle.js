@@ -14,17 +14,17 @@ const userRoutes =
   children: [
     {
       path: "",
-      name: "list.vehicles",
+      name: "ListVehiecles",
       component: Vehicle,
     },
     {
       path: "create",
-      name: "create.vehicles",
+      name: "CreateVehiecles",
       component: Create,
     },
     {
-      path: "update",
-      name: "update.vehicles",
+      path: "update/:id",
+      name: "UpdateVehicles",
       component: Update,
     },
   ],

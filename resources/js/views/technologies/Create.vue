@@ -19,6 +19,7 @@ export default {
   components: {
     TechnologyForm,
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data() {
     return {
       technology: {

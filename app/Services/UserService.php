@@ -1,41 +1,45 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\User;
 
-class UserService{
-
+class UserService
+{
     public function index()
     {
-        return User::all();
+        return User::paginate(20);
     }
 
-    public function createUser($request)
+    public function store($request)
     {
         $user = new User;
         $user->name = $request->name;
         $user->password = bcrypt($request->password);
         $user->id_role = $request->id_role;
         $user->save();
+        return $user;
     }
 
-    public function getUser($id)
+    public function show($id)
     {
-       return User::FindOrFail($id);
+        return User::FindOrFail($id);
     }
 
-    public function updateUser($request)
+    public function update($request, $id)
     {
-        $user = User::FindOrFail($request->id);
+        $user = User::FindOrFail($id);
         $user->name = $request->name;
         $user->password = bcrypt($request->password);
         $user->id_role  = $request->id_role;
         $user->update();
+        return $user;
     }
 
-    public function deleteUser($id)
+    public function destroy($id)
     {
         $user = User::FindOrFail($id);
         $user->delete();
+        return $user;
     }
 }

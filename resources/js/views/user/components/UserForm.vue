@@ -27,13 +27,29 @@
         <b-form-select
           id="input-3"
           :value="user.id_role"
-          @input="handleChange('id_role', $event)"
-          :options="foods"
           required
-        ></b-form-select>
+          @input="handleChange('id_role', $event)"
+        >
+          <b-form-select-option value="">Please select an option</b-form-select-option>
+          <b-form-select-option
+            v-for="role in roles"
+            :value="role.id"
+            :key="role.id"
+          >
+            {{ role.name }}
+          </b-form-select-option>
+        </b-form-select>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">{{ btnSubmitText }}</b-button>
+      <b-button
+        type="submit"
+        @click.prevent="createAndUpdateUser"
+        variant="primary"
+        :disabled="isBtnDisabled"
+      >
+        {{ btnSubmitText }}
+        <b-spinner v-if="isBtnDisabled" small label="Spinning" />
+      </b-button>
     </b-form>
   </div>
 </template>
@@ -45,17 +61,25 @@ export default {
       type: Object,
       default: () => {},
     },
-    foods: {
+    roles: {
       type: Array,
-      default: () => {},
+      default: () => [],
     },
     btnSubmitText: {
       type: String,
+    },
+    isBtnDisabled: {
+      type: Boolean,
     },
   },
   methods: {
     handleChange(name, value) {
       this.$emit("onHandleChange", name, value);
+    },
+    createAndUpdateUser() {
+      this.$emit("onCreateUser");
+      this.$emit("onUpdateUser");
+      
     },
   },
 };
