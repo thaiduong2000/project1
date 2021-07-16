@@ -11,14 +11,14 @@ class Roles extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('roles', function (Blueprint $table) {
+    //         $table->increments('id');
+    //         $table->string('name');
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.

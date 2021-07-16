@@ -7,6 +7,7 @@ use App\Services\UserService;
 use App\Models\User;
 use App\Models\Roles;
 
+
 class UserController extends Controller
 {
     public $userService;
@@ -22,31 +23,42 @@ class UserController extends Controller
         return view('user.index',compact('user'));
     }
 
-    public function viewAddUser()
+    public function viewAdd()
     {
-        $role = Roles::all();
-        return view('user.add_user',compact('role'));
+        $roles = Roles::all();
+        $user = new User();
+        $action = route('createUser');
+        $button = 'Create';
+        return view('user.create_or_update',compact('user','roles','action','button'));
     }
 
-    public function createUser(Request $request){ 
-        $this->userService->createUser($request);
+    public function create(Request $request){ 
+        $this->userService->create($request);
         return back()->with('success','Created Successful!');
     }
 
-    public function getUser($id){
-        $role = Roles::all();
-        $user = $this->userService->getUser($id);
-        return view('user.update_user',compact('user','role'));
-
+    public function viewUpdate($id){
+        $roles = Roles::all();
+        $user = $this->userService->get($id);
+        $action = route('updateUser');
+        $button = 'Update';
+        return view('user.create_or_update',compact('user','roles','action','button'));
     }
 
-    public function updateUser(Request $request){
-        $user = $this->userService->updateUser($request);
+    public function update(Request $request){
+        $user = $this->userService->update($request);
         return back()->with('success','Update Successful!');
     }
 
-    public function deleteUser($id){
-        $this->userService->deleteUser($id);
+    public function delete($id){
+        $this->userService->delete($id);
         return back()->with('success','Delete Successful!');
+    
+    }
+
+    public function sortDelete(){
+        $getAll = User::withTrashed()->get();
+        $onlyRowSortDelete = User::onlyTrashed()->get(); 
+        return view('user.list_sort_delete',compact('getAll','onlyRowSortDelete')); 
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\TechnologiesService;
+use App\Models\Technologies;
 
 class TechnologiesController extends Controller
 {
@@ -20,35 +21,38 @@ class TechnologiesController extends Controller
         return view('technologies.index',compact('technologies'));
     }
 
-    public function viewAddTechnology()
+    public function viewAdd()
     {
-        return view('technologies.add_technology');
+        $technology = new Technologies();
+        $action = route('createTechnology');
+        $button = 'Create';
+        return view('technologies.create_or_update',compact('technology','action','button'));
     }
 
-    public function createTechnology(Request $request)
+    public function create(Request $request)
     {
-        $this->technologyService->createTechnology($request);
-        return back()->with('success','thêm mới thành công !');
+        $this->technologyService->create($request);
+        return back()->with('success','Create Successful!');
     }
 
-    public function getTechnology($id)
+    public function viewUpdate($id)
     {
-
-        $technology = $this->technologyService->getTechnology($id);
-        return view('technologies.update_technology',compact('technology'));
-
+        $technology = $this->technologyService->get($id);
+        $action = route('updateTechnology');
+        $button = 'Update';
+        return view('technologies.create_or_update',compact('technology','action','button'));
     }
 
-    public function updateTechnology(Request $request)
+    public function update(Request $request)
     {
-        $technology = $this->technologyService->updateTechnology($request);
-        return back()->with('success','cập nhật người dùng thành công !');
+        $technology = $this->technologyService->update($request);
+        return back()->with('success','Update Successful!');
     }
 
-    public function deleteTechnology($id)
+    public function delete($id)
     {
-        $this->technologyService->deleteTechnology($id);
-        return back()->with('success','Xóa người dùng thành công !');
+        $this->technologyService->delete($id);
+        return back()->with('success','Delete Successful!');
     }
 
 }

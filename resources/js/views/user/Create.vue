@@ -5,10 +5,15 @@
         <UserForm
           btnSubmitText="Create"
           :user="user"
+<<<<<<< HEAD
           :roles="roles"
           :isBtnDisabled="isBtnDisabled"
           @onHandleChange="handleChange"
           @onCreateUser="createUser"
+=======
+          :foods="foods"
+          @onHandleChange="handleChange"
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
         />
       </div>
     </div>
@@ -16,7 +21,10 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import axios from "axios";
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 import UserForm from "./components/UserForm.vue";
 export default {
   components: {

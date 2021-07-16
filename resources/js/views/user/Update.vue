@@ -4,17 +4,25 @@
       <UserForm
         btnSubmitText="Update"
         :user="user"
+<<<<<<< HEAD
         :roles="roles"
         :isBtnDisabled="isBtnDisabled"
         @onHandleChange="handleChange"
         @onUpdateUser="updateUser"
+=======
+        :foods="foods"
+        @onHandleChange="handleChange"
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
       />
     </div>
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import axios from "axios";
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 import UserForm from "./components/UserForm.vue";
 export default {
   components: {

@@ -1,7 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
   \*************************************/
@@ -1835,8 +1834,6 @@ module.exports = {
 /***/ }),
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/App.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/App.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1893,10 +1890,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
 //
+=======
+/* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -1913,16 +1914,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+<<<<<<< HEAD
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
+=======
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   },
   data: function data() {
     return {
       technology: {
         name: ""
       },
+<<<<<<< HEAD
       isBtnDisabled: false
     };
   },
@@ -1941,6 +1949,17 @@ __webpack_require__.r(__webpack_exports__);
           name: "ListTechnology"
         });
       });
+=======
+      foods: [{
+        text: "Select One",
+        value: null
+      }, "Carrots", "Beans", "Tomatoes", "Corn"]
+    };
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      this.user[name] = value;
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -1958,6 +1977,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ListTechnology.vue */ "./resources/js/views/technologies/components/ListTechnology.vue");
@@ -1965,6 +1985,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+/* harmony import */ var _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ListTechnology.vue */ "./resources/js/views/technologies/components/ListTechnology.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -1975,6 +1998,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -2052,6 +2076,30 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
+=======
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ListTechnology: _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      technologies: [{
+        Id: 1,
+        Name: "Dickerson",
+        action: ""
+      }, {
+        Id: 2,
+        Name: "Larsen"
+      }, {
+        Id: 3,
+        Name: "Geneva"
+      }, {
+        Id: 4,
+        Name: "Jami"
+      }]
+    };
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   }
 });
 
@@ -2068,9 +2116,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
+=======
+/* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -2084,16 +2136,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
+=======
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   },
   data: function data() {
     return {
       technology: {
+<<<<<<< HEAD
         name: ""
       },
       btnSubmitText: "Update",
@@ -2128,6 +2188,20 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (res) {
         _this2.isBtnDisabled = false;
       });
+=======
+        name: "technologies"
+      },
+      foods: [{
+        text: "Select One",
+        value: null
+      }, "Carrotss", "Beanss", "Tomatoes", "Corn"],
+      btnSubmitText: "Update"
+    };
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      this.user[name] = value;
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -2155,6 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -2194,10 +2269,16 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     fields: {
+=======
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    technologies: {
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
       type: Array,
       "default": function _default() {
         return [];
       }
+<<<<<<< HEAD
     },
     perPage: {
       type: Number
@@ -2218,6 +2299,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteTechnology: function deleteTechnology(id) {
       this.$emit("onDeleteTechnology", id);
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -2254,15 +2337,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     technology: {
       type: Object,
       "default": function _default() {}
     },
+<<<<<<< HEAD
     btnSubmitText: {
       type: String
     },
@@ -2277,6 +2364,19 @@ __webpack_require__.r(__webpack_exports__);
     createOrUpdate: function createOrUpdate() {
       this.$emit('onCreateTechnology');
       this.$emit('onUpdateTechnology');
+=======
+    foods: {
+      type: Array,
+      "default": function _default() {}
+    },
+    btnSubmitText: {
+      type: String
+    }
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      this.$emit("onHandleChange", name, value);
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -2294,10 +2394,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/UserForm.vue */ "./resources/js/views/user/components/UserForm.vue");
 //
+=======
+/* harmony import */ var _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/UserForm.vue */ "./resources/js/views/user/components/UserForm.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -2313,12 +2417,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     UserForm: _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
+=======
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    UserForm: _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   },
   data: function data() {
     return {
@@ -2327,6 +2438,7 @@ __webpack_require__.r(__webpack_exports__);
         password: "",
         id_role: ""
       },
+<<<<<<< HEAD
       roles: [],
       isBtnDisabled: false
     };
@@ -2362,6 +2474,17 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         _this2.isBtnDisabled = false;
       });
+=======
+      foods: [{
+        text: "Select One",
+        value: null
+      }, "Carrots", "Beans", "Tomatoes", "Corn"]
+    };
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      this.user[name] = value;
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -2379,6 +2502,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_ListUser_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ListUser.vue */ "./resources/js/views/user/components/ListUser.vue");
@@ -2393,6 +2517,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+/* harmony import */ var _components_ListUser_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ListUser.vue */ "./resources/js/views/user/components/ListUser.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -2402,6 +2529,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+<<<<<<< HEAD
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2479,6 +2607,33 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
+=======
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ListUser: _components_ListUser_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      items: [{
+        Id: 1,
+        Name: "Dickerson",
+        Roles: "Macdonald",
+        action: ""
+      }, {
+        Id: 2,
+        Name: "Larsen",
+        Roles: "Shaw"
+      }, {
+        Id: 3,
+        Name: "Geneva",
+        Roles: "Wilson"
+      }, {
+        Id: 4,
+        Name: "Jami",
+        Roles: "Carney"
+      }]
+    };
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   }
 });
 
@@ -2495,11 +2650,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/UserForm.vue */ "./resources/js/views/user/components/UserForm.vue");
 //
 //
+=======
+/* harmony import */ var _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/UserForm.vue */ "./resources/js/views/user/components/UserForm.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -2514,14 +2673,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+<<<<<<< HEAD
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     UserForm: _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
+=======
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    UserForm: _components_UserForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   },
   data: function data() {
     return {
       user: {
+<<<<<<< HEAD
         name: "",
         password: "",
         id_role: ""
@@ -2572,6 +2738,23 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         _this3.isBtnDisabled = false;
       });
+=======
+        name: "duong",
+        password: "123123",
+        id_role: 1
+      },
+      foods: [{
+        text: "Select One",
+        value: null
+      }, "Carrots", "Beans", "Tomatoes", "Corn"],
+      btnSubmitText: "Update"
+    };
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      console.log(name, value);
+      this.user[name] = value;
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -2599,6 +2782,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -2632,6 +2816,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     items: {
@@ -2639,6 +2825,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [];
       }
+<<<<<<< HEAD
     },
     fields: {
       type: Array,
@@ -2665,6 +2852,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteUser: function deleteUser(id) {
       this.$emit("onDeleteUser", id);
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -2722,6 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -2738,12 +2928,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     user: {
       type: Object,
       "default": function _default() {}
     },
+<<<<<<< HEAD
     roles: {
       type: Array,
       "default": function _default() {
@@ -2755,15 +2948,26 @@ __webpack_require__.r(__webpack_exports__);
     },
     isBtnDisabled: {
       type: Boolean
+=======
+    foods: {
+      type: Array,
+      "default": function _default() {}
+    },
+    btnSubmitText: {
+      type: String
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   },
   methods: {
     handleChange: function handleChange(name, value) {
       this.$emit("onHandleChange", name, value);
+<<<<<<< HEAD
     },
     createAndUpdateUser: function createAndUpdateUser() {
       this.$emit("onCreateUser");
       this.$emit("onUpdateUser");
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -2781,6 +2985,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
@@ -2981,6 +3186,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
+=======
+/* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -2997,10 +3205,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+<<<<<<< HEAD
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
+=======
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   },
   data: function data() {
     return {
@@ -3008,6 +3222,7 @@ __webpack_require__.r(__webpack_exports__);
         name: "",
         technology_id: ""
       },
+<<<<<<< HEAD
       technologies: [],
       isBtnDisabled: false
     };
@@ -3055,6 +3270,144 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err);
         _this3.isBtnDisabled = false;
       });
+=======
+      foods: [{
+        text: "Select One",
+        value: null
+      }, "Carrots", "Beans", "Tomatoes", "Corn"]
+    };
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      this.user[name] = value;
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
+    }
+  }
+});
+
+/***/ }),
+
+<<<<<<< HEAD
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/vehicles/components/ListVehicle.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/vehicles/components/ListVehicle.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/vehicles/List.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/vehicles/List.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************/
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+<<<<<<< HEAD
+=======
+/* harmony import */ var _components_ListVehicle_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ListVehicle.vue */ "./resources/js/views/vehicles/components/ListVehicle.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
+//
+//
+//
+//
+//
+//
+//
+//
+<<<<<<< HEAD
+=======
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ListTechnology: _components_ListVehicle_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      vehicles: [{
+        Id: 1,
+        Name: "Dickerson",
+        roles: "role 1",
+        action: ""
+      }, {
+        Id: 2,
+        Name: "Larsen",
+        roles: "role 2"
+      }, {
+        Id: 3,
+        Name: "Geneva",
+        roles: "role 3"
+      }, {
+        Id: 4,
+        Name: "Jami",
+        roles: "role 4"
+      }]
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/vehicles/Update.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/vehicles/Update.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+<<<<<<< HEAD
+//
+//
+//
+//
+//
+//
+//
+//
+//
+=======
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      vehicle: {
+        name: "duong",
+        technology_id: 1
+      },
+      foods: [{
+        text: "Select One",
+        value: null
+      }, "Carrots", "Beans", "Tomatoes", "Corn"],
+      btnSubmitText: "Update"
+    };
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      this.user[name] = value;
     }
   }
 });
@@ -3072,36 +3425,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 //
 //
 //
@@ -3114,6 +3438,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
+<<<<<<< HEAD
     items: {
       type: Array,
       "default": function _default() {
@@ -3121,10 +3446,14 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     fields: {
+=======
+    vehicles: {
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
       type: Array,
       "default": function _default() {
         return [];
       }
+<<<<<<< HEAD
     },
     perPage: {
       type: Number
@@ -3148,6 +3477,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteVehicle: function deleteVehicle(id) {
       this.$emit("onDeleteVehicle", id);
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -3194,6 +3525,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -3210,12 +3542,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     vehicle: {
       type: Object,
       "default": function _default() {}
     },
+<<<<<<< HEAD
     technologies: {
       type: Array,
       "default": function _default() {
@@ -3236,6 +3571,19 @@ __webpack_require__.r(__webpack_exports__);
     createOrUpdate: function createOrUpdate() {
       this.$emit("onCreateVehicles");
       this.$emit("onUpdateVehicles");
+=======
+    foods: {
+      type: Array,
+      "default": function _default() {}
+    },
+    btnSubmitText: {
+      type: String
+    }
+  },
+  methods: {
+    handleChange: function handleChange(name, value) {
+      this.$emit("onHandleChange", name, value);
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     }
   }
 });
@@ -3250,6 +3598,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -3262,10 +3611,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue");
 /* harmony import */ var _router_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./router/index */ "./resources/js/router/index.js");
 
+=======
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/icons/plugin.js");
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
+/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
+/* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue");
+/* harmony import */ var _router_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./router/index */ "./resources/js/router/index.js");
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 
 
 
 
+<<<<<<< HEAD
 
 vue__WEBPACK_IMPORTED_MODULE_4__.default.use((vue_axios__WEBPACK_IMPORTED_MODULE_1___default()), (axios__WEBPACK_IMPORTED_MODULE_0___default()));
 vue__WEBPACK_IMPORTED_MODULE_4__.default.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_5__.BootstrapVue);
@@ -3277,6 +3636,17 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4__.default({
   router: _router_index__WEBPACK_IMPORTED_MODULE_8__.default,
   render: function render(h) {
     return h(_components_App_vue__WEBPACK_IMPORTED_MODULE_7__.default);
+=======
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_3__.BootstrapVue);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_4__.IconsPlugin);
+
+
+var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
+  el: '#app',
+  router: _router_index__WEBPACK_IMPORTED_MODULE_6__.default,
+  render: function render(h) {
+    return h(_components_App_vue__WEBPACK_IMPORTED_MODULE_5__.default);
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
   }
 });
 
@@ -3345,7 +3715,11 @@ var technologyRoutes = {
     name: "CreateTechnology",
     component: _views_technologies_Create__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
+<<<<<<< HEAD
     path: "update/:id",
+=======
+    path: "update",
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     name: "UpdateTechnology",
     component: _views_technologies_Update__WEBPACK_IMPORTED_MODULE_2__.default
   }]
@@ -3387,7 +3761,11 @@ var userRoutes = {
     name: "CreateUser",
     component: _views_user_Create__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
+<<<<<<< HEAD
     path: "update/:id",
+=======
+    path: "update",
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     name: "UpdateUser",
     component: _views_user_Update__WEBPACK_IMPORTED_MODULE_2__.default
   }]
@@ -3422,6 +3800,7 @@ var userRoutes = {
   component: Layout,
   children: [{
     path: "",
+<<<<<<< HEAD
     name: "ListVehicle",
     component: _views_vehicles_List__WEBPACK_IMPORTED_MODULE_0__.default
   }, {
@@ -3431,6 +3810,17 @@ var userRoutes = {
   }, {
     path: "update/:id",
     name: "UpdateVehicle",
+=======
+    name: "list.vehicles",
+    component: _views_vehicles_List__WEBPACK_IMPORTED_MODULE_0__.default
+  }, {
+    path: "create",
+    name: "create.vehicles",
+    component: _views_vehicles_Create__WEBPACK_IMPORTED_MODULE_1__.default
+  }, {
+    path: "update",
+    name: "update.vehicles",
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     component: _views_vehicles_Update__WEBPACK_IMPORTED_MODULE_2__.default
   }]
 };
@@ -49630,6 +50020,7 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/vue-axios/dist/vue-axios.es5.js":
 /*!******************************************************!*\
   !*** ./node_modules/vue-axios/dist/vue-axios.es5.js ***!
@@ -49643,6 +50034,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof
 
 /***/ }),
 
+=======
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
 /***/ "./node_modules/vue-functional-data-merge/dist/lib.esm.js":
 /*!****************************************************************!*\
   !*** ./node_modules/vue-functional-data-merge/dist/lib.esm.js ***!
@@ -50939,12 +51332,18 @@ var render = function() {
             attrs: {
               btnSubmitText: "Create",
               technology: _vm.technology,
+<<<<<<< HEAD
               isBtnDisabled: _vm.isBtnDisabled
             },
             on: {
               onHandleChangeValue: _vm.handleChangeValue,
               onCreateTechnology: _vm.createTechnology
             }
+=======
+              foods: _vm.foods
+            },
+            on: { onHandleChange: _vm.handleChange }
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
           })
         ],
         1
@@ -50983,17 +51382,27 @@ var render = function() {
         { staticClass: "d-flex justify-content-end" },
         [
           _c(
+<<<<<<< HEAD
             "router-link",
             {
               staticClass: "btn btn-success",
               attrs: { to: { name: "CreateTechnology" } }
             },
             [_vm._v("\n      Add new\n    ")]
+=======
+            "b-link",
+            {
+              staticClass: "btn btn-success",
+              attrs: { href: "/technologies/create" }
+            },
+            [_vm._v("Add new")]
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
           )
         ],
         1
       ),
       _vm._v(" "),
+<<<<<<< HEAD
       _c("ListTechnology", {
         attrs: {
           fields: _vm.fields,
@@ -51008,6 +51417,9 @@ var render = function() {
           onDeleteTechnology: _vm.deleteTechnology
         }
       })
+=======
+      _c("ListTechnology", { attrs: { technologies: _vm.technologies } })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     ],
     1
   )
@@ -51044,12 +51456,18 @@ var render = function() {
           attrs: {
             btnSubmitText: "Update",
             technology: _vm.technology,
+<<<<<<< HEAD
             isBtnDisabled: _vm.isBtnDisabled
           },
           on: {
             onHandleChangeValue: _vm.handleChangeValue,
             onUpdateTechnology: _vm.updateTechnology
           }
+=======
+            foods: _vm.foods
+          },
+          on: { onHandleChange: _vm.handleChange }
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
         })
       ],
       1
@@ -51083,6 +51501,7 @@ var render = function() {
     "div",
     [
       _c("b-table", {
+<<<<<<< HEAD
         attrs: {
           id: "my-table",
           busy: _vm.isBusy,
@@ -51166,6 +51585,32 @@ var render = function() {
         ],
         1
       )
+=======
+        attrs: { striped: "", hover: "", items: _vm.technologies },
+        scopedSlots: _vm._u([
+          {
+            key: "cell(action)",
+            fn: function() {
+              return [
+                _c(
+                  "b-link",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { href: "/technologies/update" }
+                  },
+                  [_vm._v("Update")]
+                ),
+                _vm._v(" "),
+                _c("b-button", { attrs: { variant: "danger" } }, [
+                  _vm._v("Delete")
+                ])
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     ],
     1
   )
@@ -51213,7 +51658,11 @@ var render = function() {
                 },
                 on: {
                   input: function($event) {
+<<<<<<< HEAD
                     return _vm.handleChangeValue("name", $event)
+=======
+                    return _vm.handleChange("name", $event)
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
                   }
                 }
               })
@@ -51221,6 +51670,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
+<<<<<<< HEAD
           _c(
             "b-button",
             {
@@ -51244,6 +51694,11 @@ var render = function() {
             ],
             1
           )
+=======
+          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
+            _vm._v(_vm._s(_vm.btnSubmitText))
+          ])
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
         ],
         1
       )
@@ -51284,6 +51739,7 @@ var render = function() {
             attrs: {
               btnSubmitText: "Create",
               user: _vm.user,
+<<<<<<< HEAD
               roles: _vm.roles,
               isBtnDisabled: _vm.isBtnDisabled
             },
@@ -51291,6 +51747,11 @@ var render = function() {
               onHandleChange: _vm.handleChange,
               onCreateUser: _vm.createUser
             }
+=======
+              foods: _vm.foods
+            },
+            on: { onHandleChange: _vm.handleChange }
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
           })
         ],
         1
@@ -51329,14 +51790,24 @@ var render = function() {
         { staticClass: "d-flex justify-content-end" },
         [
           _c(
+<<<<<<< HEAD
             "router-link",
             { staticClass: "btn btn-success", attrs: { to: "/users/create" } },
             [_vm._v("\n      Add new\n    ")]
+=======
+            "b-link",
+            {
+              staticClass: "btn btn-success",
+              attrs: { href: "/users/create" }
+            },
+            [_vm._v("Add new")]
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
           )
         ],
         1
       ),
       _vm._v(" "),
+<<<<<<< HEAD
       _c("ListUser", {
         attrs: {
           items: _vm.items,
@@ -51351,6 +51822,9 @@ var render = function() {
           onDeleteUser: _vm.deleteUser
         }
       })
+=======
+      _c("ListUser", { attrs: { items: _vm.items } })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     ],
     1
   )
@@ -51384,6 +51858,7 @@ var render = function() {
       { staticClass: "col-md-6 offset-3" },
       [
         _c("UserForm", {
+<<<<<<< HEAD
           attrs: {
             btnSubmitText: "Update",
             user: _vm.user,
@@ -51391,6 +51866,10 @@ var render = function() {
             isBtnDisabled: _vm.isBtnDisabled
           },
           on: { onHandleChange: _vm.handleChange, onUpdateUser: _vm.updateUser }
+=======
+          attrs: { btnSubmitText: "Update", user: _vm.user, foods: _vm.foods },
+          on: { onHandleChange: _vm.handleChange }
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
         })
       ],
       1
@@ -51424,6 +51903,7 @@ var render = function() {
     "div",
     [
       _c("b-table", {
+<<<<<<< HEAD
         attrs: {
           id: "my-table",
           busy: _vm.isBusy,
@@ -51507,6 +51987,32 @@ var render = function() {
         ],
         1
       )
+=======
+        attrs: { striped: "", hover: "", items: _vm.items },
+        scopedSlots: _vm._u([
+          {
+            key: "cell(action)",
+            fn: function() {
+              return [
+                _c(
+                  "b-link",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { href: "/users/update" }
+                  },
+                  [_vm._v("Update")]
+                ),
+                _vm._v(" "),
+                _c("b-button", { attrs: { variant: "danger" } }, [
+                  _vm._v("Delete")
+                ])
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     ],
     1
   )
@@ -51600,6 +52106,7 @@ var render = function() {
               }
             },
             [
+<<<<<<< HEAD
               _c(
                 "b-form-select",
                 {
@@ -51633,10 +52140,26 @@ var render = function() {
                 ],
                 2
               )
+=======
+              _c("b-form-select", {
+                attrs: {
+                  id: "input-3",
+                  value: _vm.user.id_role,
+                  options: _vm.foods,
+                  required: ""
+                },
+                on: {
+                  input: function($event) {
+                    return _vm.handleChange("id_role", $event)
+                  }
+                }
+              })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
             ],
             1
           ),
           _vm._v(" "),
+<<<<<<< HEAD
           _c(
             "b-button",
             {
@@ -51660,6 +52183,11 @@ var render = function() {
             ],
             1
           )
+=======
+          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
+            _vm._v(_vm._s(_vm.btnSubmitText))
+          ])
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
         ],
         1
       )
@@ -51700,6 +52228,7 @@ var render = function() {
             attrs: {
               btnSubmitText: "Create",
               vehicle: _vm.vehicle,
+<<<<<<< HEAD
               technologies: _vm.technologies,
               isBtnDisabled: _vm.isBtnDisabled
             },
@@ -51707,6 +52236,11 @@ var render = function() {
               onHandleChangeValue: _vm.handleChangeValue,
               onCreateVehicles: _vm.createVehicles
             }
+=======
+              foods: _vm.foods
+            },
+            on: { onHandleChange: _vm.handleChange }
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
           })
         ],
         1
@@ -51745,17 +52279,27 @@ var render = function() {
         { staticClass: "d-flex justify-content-end" },
         [
           _c(
+<<<<<<< HEAD
             "router-link",
             {
               staticClass: "btn btn-success",
               attrs: { to: "/vehicles/create" }
             },
             [_vm._v("\n      Add new\n    ")]
+=======
+            "b-link",
+            {
+              staticClass: "btn btn-success",
+              attrs: { href: "/vehicles/create" }
+            },
+            [_vm._v("Add new")]
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
           )
         ],
         1
       ),
       _vm._v(" "),
+<<<<<<< HEAD
       _c("ListTechnology", {
         attrs: {
           items: _vm.items,
@@ -51771,6 +52315,9 @@ var render = function() {
           onDeleteVehicle: _vm.deleteVehicle
         }
       })
+=======
+      _c("ListTechnology", { attrs: { vehicles: _vm.vehicles } })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     ],
     1
   )
@@ -51807,6 +52354,7 @@ var render = function() {
           attrs: {
             btnSubmitText: "Update",
             vehicle: _vm.vehicle,
+<<<<<<< HEAD
             technologies: _vm.technologies,
             isBtnDisabled: _vm.isBtnDisabled
           },
@@ -51814,6 +52362,11 @@ var render = function() {
             onHandleChangeValue: _vm.handleChangeValue,
             onUpdateVehicles: _vm.updateVehicle
           }
+=======
+            foods: _vm.foods
+          },
+          on: { onHandleChange: _vm.handleChange }
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
         })
       ],
       1
@@ -51847,6 +52400,7 @@ var render = function() {
     "div",
     [
       _c("b-table", {
+<<<<<<< HEAD
         attrs: {
           id: "my-table",
           busy: _vm.isBusy,
@@ -51930,6 +52484,32 @@ var render = function() {
         ],
         1
       )
+=======
+        attrs: { striped: "", hover: "", items: _vm.vehicles },
+        scopedSlots: _vm._u([
+          {
+            key: "cell(action)",
+            fn: function() {
+              return [
+                _c(
+                  "b-link",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { href: "/vehicles/update" }
+                  },
+                  [_vm._v("Update")]
+                ),
+                _vm._v(" "),
+                _c("b-button", { attrs: { variant: "danger" } }, [
+                  _vm._v("Delete")
+                ])
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
     ],
     1
   )
@@ -51977,7 +52557,11 @@ var render = function() {
                 },
                 on: {
                   input: function($event) {
+<<<<<<< HEAD
                     return _vm.handleChangeValue("name", $event)
+=======
+                    return _vm.handleChange("name", $event)
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
                   }
                 }
               })
@@ -51995,6 +52579,7 @@ var render = function() {
               }
             },
             [
+<<<<<<< HEAD
               _c(
                 "b-form-select",
                 {
@@ -52030,10 +52615,26 @@ var render = function() {
                 ],
                 2
               )
+=======
+              _c("b-form-select", {
+                attrs: {
+                  id: "input-3",
+                  value: _vm.vehicle.technology_id,
+                  options: _vm.foods,
+                  required: ""
+                },
+                on: {
+                  input: function($event) {
+                    return _vm.handleChange("technology_id", $event)
+                  }
+                }
+              })
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
             ],
             1
           ),
           _vm._v(" "),
+<<<<<<< HEAD
           _c(
             "b-button",
             {
@@ -52057,6 +52658,11 @@ var render = function() {
             ],
             1
           )
+=======
+          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
+            _vm._v(_vm._s(_vm.btnSubmitText))
+          ])
+>>>>>>> b748ac3feb61722e33150db130165ce37551985f
         ],
         1
       )
