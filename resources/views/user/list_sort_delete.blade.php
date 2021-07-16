@@ -1,15 +1,6 @@
 @extends('master.master_layout')
 @section('content')
-@if(session('success'))
-<div class="alert alert-success" role="alert">
-    {{ session('success');}}
-</div>
-@endif
-<div class="d-flex justify-content-end">
-  <a href="{{ route('viewAddUser') }}" class="btn btn-success">Add new</a>
-</div>
 <table class="table" >
-
     <thead>
       <tr>
         <th scope="col">id</th>
@@ -19,14 +10,13 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($user as $item)
+      @foreach ($onlyRowSortDelete as $item)
       <tr>
         <th scope="row">{{$item->id}}</th>
         <td>{{$item->name}}</td>
         <td>{{$item->id_role}}</td>
         <td>
          <div class=d-flex >
-           <a href="{{ route('viewUpdateUser',$item->id)  }}" class="btn btn-primary me-2">Update</a>
           <form method="POST" action="{{ route('deleteUser',$item->id)  }}">
             @csrf
             {{ method_field('delete')}}
@@ -38,4 +28,5 @@
       @endforeach
     </tbody>
   </table>
+
 @endsection
