@@ -7,6 +7,7 @@ use App\Services\UserService;
 use App\Models\User;
 use App\Models\Roles;
 
+
 class UserController extends Controller
 {
     public $userService;
@@ -25,7 +26,10 @@ class UserController extends Controller
     public function viewAdd()
     {
         $roles = Roles::all();
-        return view('user.add',compact('roles'));
+        $user = new User();
+        $action = route('createUser');
+        $button = 'Create';
+        return view('user.create_or_update',compact('user','roles','action','button'));
     }
 
     public function create(Request $request){ 
@@ -33,10 +37,12 @@ class UserController extends Controller
         return back()->with('success','Created Successful!');
     }
 
-    public function get($id){
+    public function viewUpdate($id){
         $roles = Roles::all();
         $user = $this->userService->get($id);
-        return view('user.update',compact('user','roles'));
+        $action = route('updateUser');
+        $button = 'Update';
+        return view('user.create_or_update',compact('user','roles','action','button'));
     }
 
     public function update(Request $request){
@@ -47,5 +53,12 @@ class UserController extends Controller
     public function delete($id){
         $this->userService->delete($id);
         return back()->with('success','Delete Successful!');
+    
+    }
+
+    public function sortDelete(){
+        $getAll = User::withTrashed()->get();
+        $onlyRowSortDelete = User::onlyTrashed()->get(); 
+        return view('user.list_sort_delete',compact('getAll','onlyRowSortDelete')); 
     }
 }

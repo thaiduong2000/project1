@@ -11,6 +11,10 @@ class Technologies extends Model
     
     protected $table = 'technologies';
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function vehicles(){
 
         return $this->hasMany(Vehicles::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\TechnologiesService;
+use App\Models\Technologies;
 
 class TechnologiesController extends Controller
 {
@@ -22,7 +23,10 @@ class TechnologiesController extends Controller
 
     public function viewAdd()
     {
-        return view('technologies.add');
+        $technology = new Technologies();
+        $action = route('createTechnology');
+        $button = 'Create';
+        return view('technologies.create_or_update',compact('technology','action','button'));
     }
 
     public function create(Request $request)
@@ -31,10 +35,12 @@ class TechnologiesController extends Controller
         return back()->with('success','Create Successful!');
     }
 
-    public function get($id)
+    public function viewUpdate($id)
     {
         $technology = $this->technologyService->get($id);
-        return view('technologies.update',compact('technology'));
+        $action = route('updateTechnology');
+        $button = 'Update';
+        return view('technologies.create_or_update',compact('technology','action','button'));
     }
 
     public function update(Request $request)

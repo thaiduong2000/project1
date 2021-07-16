@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Technologies;
 use App\Services\VehiclesService;
+use App\Models\Vehicles;
 class VehiclesController extends Controller
 {
     public $vehiclesService;
@@ -23,7 +24,10 @@ class VehiclesController extends Controller
     public function viewAdd()
     {
         $technologies = Technologies::all();
-        return view('vehicles.add',compact('technologies'));
+        $vehicle  = new Vehicles();
+        $action = route('createVehicle');
+        $button = 'Create';
+        return view('vehicles.create_or_update',compact('technologies','vehicle','action','button'));
     }
 
     public function create(Request $request){ 
@@ -31,10 +35,12 @@ class VehiclesController extends Controller
         return back()->with('success','Created Successful!');
     }
 
-    public function get($id){
+    public function viewUpdate($id){
         $technologies = Technologies::all();
         $vehicle = $this->vehiclesService->get($id);
-        return view('vehicles.update',compact('vehicle','technologies'));
+        $action = route('updateVehicle');
+        $button = 'Update';
+        return view('vehicles.create_or_update',compact('vehicle','technologies','action','button'));
 
     }
 

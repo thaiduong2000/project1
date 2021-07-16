@@ -6,17 +6,16 @@
     {{ session('success');}}
 </div>
 @endif
-
-<form method="POST" action="{{ route('updateTechnology')}}" >
-    {{ method_field('PUT')}}
+<form method="POST" action="{{ $action }}">
+    @if(isset($technology->id))
+      {{ method_field('PUT')}}
+    @endif
     <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
     <input  name="id" type="hidden" value="{{ $technology->id }}"/>
-    
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">name</label>
-      <input type="text" class="form-control" value="{{ $technology->name}}" name="name" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="text" class="form-control" name="name" value="{{ $technology->name }}" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
-
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary">{{ $button }}</button>
   </form>
 @endsection
