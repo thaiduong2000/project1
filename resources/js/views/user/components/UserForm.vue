@@ -27,7 +27,6 @@
         <b-form-select
           id="input-3"
           :value="user.id_role"
-<<<<<<< HEAD
           required
           @input="handleChange('id_role', $event)"
         >
@@ -51,15 +50,6 @@
         {{ btnSubmitText }}
         <b-spinner v-if="isBtnDisabled" small label="Spinning" />
       </b-button>
-=======
-          @input="handleChange('id_role', $event)"
-          :options="foods"
-          required
-        ></b-form-select>
-      </b-form-group>
-
-      <b-button type="submit" variant="primary">{{ btnSubmitText }}</b-button>
->>>>>>> b748ac3feb61722e33150db130165ce37551985f
     </b-form>
   </div>
 </template>

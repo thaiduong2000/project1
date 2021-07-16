@@ -2319,11 +2319,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2692,16 +2687,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -51288,24 +51273,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6 offset-3" }, [
-          _vm._v(
-            '\n<<<<<<< HEAD\n          :roles="roles"\n          :isBtnDisabled="isBtnDisabled"\n          @onHandleChange="handleChange"\n          @onCreateUser="createUser"\n=======\n          :foods="foods"\n          @onHandleChange="handleChange"\n>>>>>>> b748ac3feb61722e33150db130165ce37551985f\n        />\n      '
-          )
-        ])
-      ])
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-6 offset-3" },
+        [
+          _c("UserForm", {
+            attrs: {
+              btnSubmitText: "Create",
+              user: _vm.user,
+              roles: _vm.roles,
+              isBtnDisabled: _vm.isBtnDisabled
+            },
+            on: {
+              onHandleChange: _vm.handleChange,
+              onCreateUser: _vm.createUser
+            }
+          })
+        ],
+        1
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -51607,26 +51599,41 @@ var render = function() {
               }
             },
             [
-              _vm._v(
-                "\n<<<<<<< HEAD\n          required\n          @input=\"handleChange('id_role', $event)\"\n        >\n          "
-              ),
-              _c("b-form-select-option", { attrs: { value: "" } }, [
-                _vm._v("Please select an option")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.roles, function(role) {
-                return _c(
-                  "b-form-select-option",
-                  { key: role.id, attrs: { value: role.id } },
-                  [
-                    _vm._v(
-                      "\n            " + _vm._s(role.name) + "\n          "
+              _c(
+                "b-form-select",
+                {
+                  attrs: {
+                    id: "input-3",
+                    value: _vm.user.id_role,
+                    required: ""
+                  },
+                  on: {
+                    input: function($event) {
+                      return _vm.handleChange("id_role", $event)
+                    }
+                  }
+                },
+                [
+                  _c("b-form-select-option", { attrs: { value: "" } }, [
+                    _vm._v("Please select an option")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.roles, function(role) {
+                    return _c(
+                      "b-form-select-option",
+                      { key: role.id, attrs: { value: role.id } },
+                      [
+                        _vm._v(
+                          "\n          " + _vm._s(role.name) + "\n        "
+                        )
+                      ]
                     )
-                  ]
-                )
-              })
+                  })
+                ],
+                2
+              )
             ],
-            2
+            1
           ),
           _vm._v(" "),
           _c(
@@ -51645,21 +51652,13 @@ var render = function() {
               }
             },
             [
-              _vm._v("\n        " + _vm._s(_vm.btnSubmitText) + "\n        "),
+              _vm._v("\n      " + _vm._s(_vm.btnSubmitText) + "\n      "),
               _vm.isBtnDisabled
                 ? _c("b-spinner", { attrs: { small: "", label: "Spinning" } })
                 : _vm._e()
             ],
             1
-          ),
-          _vm._v(
-            '\n=======\n          @input="handleChange(\'id_role\', $event)"\n          :options="foods"\n          required\n        >'
-          ),
-          _vm._v(" "),
-          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
-            _vm._v(_vm._s(_vm.btnSubmitText))
-          ]),
-          _vm._v("\n>>>>>>> b748ac3feb61722e33150db130165ce37551985f\n    ")
+          )
         ],
         1
       )
