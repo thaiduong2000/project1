@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/{any}', 'App\Http\Controllers\SpaController@index')->where('any', '.*');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::prefix('users')->group(function () {
 //     Route::get('/','App\Http\Controllers\UserController@index');

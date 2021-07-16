@@ -11,6 +11,11 @@ class Vehicles extends Model
     
     protected $table = 'vehicles';
 
+    protected $fillable = [
+        'name',
+        'technology_id',        
+    ]; 
+
     public function technologies(){
 
         return $this->belongsTo(Technologies::class);
