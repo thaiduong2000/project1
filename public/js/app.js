@@ -1914,6 +1914,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       technology: {
@@ -1961,6 +1962,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ListTechnology: _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       technologies: [{
@@ -2013,6 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       technology: {
@@ -2550,7 +2553,7 @@ __webpack_require__.r(__webpack_exports__);
     handleChange: function handleChange(name, value) {
       this.$emit("onHandleChange", name, value);
     },
-    updateUser: function updateUser() {
+    createAndUpdateUser: function createAndUpdateUser() {
       this.$emit("onCreateUser");
       this.$emit("onUpdateUser");
     }
@@ -2591,6 +2594,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       vehicle: {
@@ -2637,6 +2641,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ListTechnology: _components_ListVehicle_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       vehicles: [{
@@ -2693,6 +2698,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       vehicle: {
@@ -2915,7 +2921,7 @@ var technologyRoutes = {
     name: "CreateTechnology",
     component: _views_technologies_Create__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
-    path: "update",
+    path: "update/:id",
     name: "UpdateTechnology",
     component: _views_technologies_Update__WEBPACK_IMPORTED_MODULE_2__.default
   }]
@@ -2992,15 +2998,15 @@ var userRoutes = {
   component: Layout,
   children: [{
     path: "",
-    name: "list.vehicles",
+    name: "ListVehiecles",
     component: _views_vehicles_List__WEBPACK_IMPORTED_MODULE_0__.default
   }, {
     path: "create",
-    name: "create.vehicles",
+    name: "CreateVehiecles",
     component: _views_vehicles_Create__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
-    path: "update",
-    name: "update.vehicles",
+    path: "update/:id",
+    name: "UpdateVehicles",
     component: _views_vehicles_Update__WEBPACK_IMPORTED_MODULE_2__.default
   }]
 };
@@ -51086,7 +51092,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  return _vm.updateUser.apply(null, arguments)
+                  return _vm.createAndUpdateUser.apply(null, arguments)
                 }
               }
             },
