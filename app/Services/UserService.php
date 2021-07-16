@@ -8,7 +8,7 @@ class UserService
 {
     public function index()
     {
-        return User::paginate(20);
+        return User::paginate(5);
     }
 
     public function store($request)

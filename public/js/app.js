@@ -1980,7 +1980,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1999,9 +1998,11 @@ __webpack_require__.r(__webpack_exports__);
       }],
       items: [],
       isBusy: false,
-      perPage: 0,
-      currentPage: 1,
-      total: 0
+      pagination: {
+        perPage: 0,
+        currentPage: 1,
+        total: 0
+      }
     };
   },
   created: function created() {
@@ -2017,17 +2018,17 @@ __webpack_require__.r(__webpack_exports__);
 
       this.isBusy = !this.isBusy;
       console.log(this.currentPage);
-      return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies?page=" + this.currentPage).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies?page=" + this.currentPage).then(function (response) {
         var _response$data = response.data,
             data = _response$data.data,
             meta = _response$data.meta;
         _this.items = data;
-        _this.perPage = meta.per_page; // // this.currentPage = meta.current_page;
-
-        _this.total = meta.total;
+        _this.pagination = {
+          perPage: meta.per_page,
+          currentPage: meta.current_page,
+          total: meta.total
+        };
         _this.isBusy = false;
-        console.log(_this.items);
-        return data;
       });
     },
     deleteTechnology: function deleteTechnology(id) {
@@ -2184,9 +2185,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     items: {
@@ -2220,9 +2218,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteTechnology: function deleteTechnology(id) {
       this.$emit("onDeleteTechnology", id);
-    },
-    listTechnologies: function listTechnologies() {
-      this.$emit("onListTechnologies");
     }
   }
 });
@@ -2402,6 +2397,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2424,20 +2423,37 @@ __webpack_require__.r(__webpack_exports__);
       }],
       items: [],
       roles: [],
+      pagination: {
+        perPage: 0,
+        currentPage: 1,
+        total: 0
+      },
       isBusy: false
     };
   },
   created: function created() {
-    this.getUser();
+    this.listUsers();
   },
   methods: {
-    getUser: function getUser() {
+    handleChangeCurrentPage: function handleChangeCurrentPage(value) {
+      this.currentPage = value;
+      this.listUsers();
+    },
+    listUsers: function listUsers() {
       var _this = this;
 
       this.isBusy = !this.isBusy;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users").then(function (response) {
-        _this.items = response.data.data;
-        _this.isBusy = !_this.isBusy;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users?page=" + this.currentPage).then(function (response) {
+        var _response$data = response.data,
+            data = _response$data.data,
+            meta = _response$data.meta;
+        _this.items = data;
+        _this.pagination = {
+          perPage: meta.per_page,
+          currentPage: meta.current_page,
+          total: meta.total
+        };
+        _this.isBusy = false;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -2458,7 +2474,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (value) {
         if (value == true) {
           axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/users/" + id).then(function (res) {
-            _this2.getUser();
+            _this2.listUsers();
           });
         }
       });
@@ -2601,6 +2617,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     items: {
@@ -2615,11 +2650,23 @@ __webpack_require__.r(__webpack_exports__);
         return [];
       }
     },
+    perPage: {
+      type: Number
+    },
+    currentPage: {
+      type: Number
+    },
+    total: {
+      type: Number
+    },
     isBusy: {
       type: Boolean
     }
   },
   methods: {
+    handleChangeCurrentPage: function handleChangeCurrentPage(value) {
+      this.$emit("onHandleChangeCurrentPage", value);
+    },
     deleteUser: function deleteUser(id) {
       this.$emit("onDeleteUser", id);
     }
@@ -50905,14 +50952,13 @@ var render = function() {
           fields: _vm.fields,
           isBusy: _vm.isBusy,
           items: _vm.items,
-          perPage: _vm.perPage,
-          currentPage: _vm.currentPage,
-          total: _vm.total
+          perPage: _vm.pagination.perPage,
+          currentPage: _vm.pagination.currentPage,
+          total: _vm.pagination.total
         },
         on: {
           onHandleChange: _vm.handleChange,
-          onDeleteTechnology: _vm.deleteTechnology,
-          onListTechnologies: _vm.listTechnologies
+          onDeleteTechnology: _vm.deleteTechnology
         }
       })
     ],
@@ -50993,7 +51039,6 @@ var render = function() {
           items: _vm.items,
           fields: _vm.fields,
           "current-page": _vm.currentPage,
-          "per-page": _vm.perPage,
           striped: "",
           small: "",
           "primary-key": "identifier"
@@ -51243,8 +51288,18 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("ListUser", {
-        attrs: { items: _vm.items, fields: _vm.fields, isBusy: _vm.isBusy },
-        on: { onDeleteUser: _vm.deleteUser }
+        attrs: {
+          items: _vm.items,
+          fields: _vm.fields,
+          isBusy: _vm.isBusy,
+          perPage: _vm.pagination.perPage,
+          currentPage: _vm.pagination.currentPage,
+          total: _vm.pagination.total
+        },
+        on: {
+          onHandleChangeCurrentPage: _vm.handleChangeCurrentPage,
+          onDeleteUser: _vm.deleteUser
+        }
       })
     ],
     1
@@ -51320,11 +51375,14 @@ var render = function() {
     [
       _c("b-table", {
         attrs: {
-          striped: "",
-          hover: "",
+          id: "my-table",
+          busy: _vm.isBusy,
           items: _vm.items,
           fields: _vm.fields,
-          busy: _vm.isBusy
+          "current-page": _vm.currentPage,
+          striped: "",
+          small: "",
+          "primary-key": "identifier"
         },
         scopedSlots: _vm._u([
           {
@@ -51377,7 +51435,28 @@ var render = function() {
             }
           }
         ])
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-end" },
+        [
+          _c("b-pagination", {
+            attrs: {
+              value: _vm.currentPage,
+              "total-rows": _vm.total,
+              "per-page": _vm.perPage,
+              "aria-controls": "my-table"
+            },
+            on: {
+              input: function($event) {
+                return _vm.handleChangeCurrentPage($event)
+              }
+            }
+          })
+        ],
+        1
+      )
     ],
     1
   )

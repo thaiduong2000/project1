@@ -9,12 +9,11 @@
       :fields="fields"
       :isBusy="isBusy"
       :items="items"
+      :perPage="pagination.perPage"
+      :currentPage="pagination.currentPage"
+      :total="pagination.total"
       @onHandleChange="handleChange"
       @onDeleteTechnology="deleteTechnology"
-      @onListTechnologies="listTechnologies"
-      :perPage="perPage"
-      :currentPage="currentPage"
-      :total="total"
     />
   </div>
 </template>
@@ -41,9 +40,11 @@ export default {
       ],
       items: [],
       isBusy: false,
-      perPage: 0,
-      currentPage: 1,
-      total: 0,
+      pagination: {
+        perPage: 0,
+        currentPage: 1,
+        total: 0,
+      },
     };
   },
   created() {
@@ -57,17 +58,17 @@ export default {
     listTechnologies() {
       this.isBusy = !this.isBusy;
       console.log(this.currentPage);
-      return axios
+      axios
         .get(`/api/technologies?page=` + this.currentPage)
         .then((response) => {
           const { data, meta } = response.data;
           this.items = data;
-          this.perPage = meta.per_page;
-          // // this.currentPage = meta.current_page;
-          this.total = meta.total;
+          this.pagination = {
+            perPage: meta.per_page,
+            currentPage: meta.current_page,
+            total: meta.total,
+          };
           this.isBusy = false;
-          console.log(this.items);
-          return data;
         });
     },
 

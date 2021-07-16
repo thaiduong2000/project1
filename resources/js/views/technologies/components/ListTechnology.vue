@@ -1,13 +1,11 @@
 <template>
   <div>
-    
     <b-table
-     id="my-table"
-     :busy="isBusy"
+      id="my-table"
+      :busy="isBusy"
       :items="items"
       :fields="fields"
       :current-page="currentPage"
-      :per-page="perPage"
       striped
       small
       primary-key="identifier"
@@ -25,11 +23,10 @@
         >
           Update
         </router-link>
-        <b-button class="btn btn-danger" @click="deleteTechnology(item.id)"
-          >Delete</b-button
-        >
+        <b-button class="btn btn-danger" @click="deleteTechnology(item.id)">Delete</b-button>
       </template>
     </b-table>
+
     <div class="d-flex justify-content-end">
       <b-pagination
         :value="currentPage"
@@ -67,14 +64,11 @@ export default {
   },
   methods: {
     handleChange(value) {
-      this.$emit("onHandleChange",value);
+      this.$emit("onHandleChange", value);
     },
     deleteTechnology(id) {
       this.$emit("onDeleteTechnology", id);
     },
-    listTechnologies(){
-      this.$emit("onListTechnologies");
-    }
   },
 };
 </script>
