@@ -21,10 +21,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import axios from "axios";
-=======
->>>>>>> b748ac3feb61722e33150db130165ce37551985f
 import UserForm from "./components/UserForm.vue";
 export default {
   components: {
