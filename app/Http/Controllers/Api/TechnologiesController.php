@@ -26,9 +26,9 @@ class TechnologiesController extends Controller
     {
         try {
             $technologies = $this->technologiesService->index();
-            return  $this->responseList($technologies, true, "Get list technology succsess", null);
+            return  $this->responseList($technologies);
         } catch (\Throwable $th) {
-            return  $this->responseError(null, false, "Get list technology fail", $th->getMessage());
+            return  $this->responseError($th->getMessage());
         }
     }
 
@@ -41,10 +41,10 @@ class TechnologiesController extends Controller
     public function store(Request $request)
     {
         try {
-            $technology = $this->technologiesService->create($request);
-            return  $this->responseSuccess($technology, true, "Create technology succsess", null);
+            $technology = $this->technologiesService->store($request);
+            return  $this->responseSuccess($technology);
         } catch (\Throwable $th) {
-            return  $this->responseError(null, false, "Create technology fail", $th->getMessage());
+            return  $this->responseError($th->getMessage());
         }
     }
 
@@ -58,9 +58,9 @@ class TechnologiesController extends Controller
     {
         try {
             $technology = $this->technologiesService->show($id);
-            return  $this->responseSuccess($technology, true, "Get technology succsess", null);
+            return  $this->responseSuccess($technology);
         } catch (\Throwable $th) {
-            return  $this->responseError(null, false, "Get technology fail", $th->getMessage());
+            return  $this->responseError($th->getMessage());
         }
     }
 
@@ -75,9 +75,9 @@ class TechnologiesController extends Controller
     {
         try {
             $technology = $this->technologiesService->update($request, $id);
-            return  $this->responseSuccess($technology, true, "Update technology succsess", null);
+            return  $this->responseSuccess($technology);
         } catch (\Throwable $th) {
-            return  $this->responseError(null, false, "Update technology fail", $th->getMessage());
+            return  $this->responseError($th->getMessage());
         }
     }
 
@@ -91,9 +91,9 @@ class TechnologiesController extends Controller
     {
         try {
             $technology = $this->technologiesService->destroy($id);
-            return  $this->responseSuccess($technology, true, "Delete technology succsess", null);
+            return  $this->responseSuccess($technology);
         } catch (\Throwable $th) {
-            return  $this->responseError(null, false, "Delete technology fail", $th->getMessage());
+            return  $this->responseError($th->getMessage());
         }
     }
 }

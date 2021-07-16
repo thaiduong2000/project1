@@ -15,7 +15,9 @@
         >
           Update
         </router-link>
-        <b-button class="btn btn-danger" @click="deleteUser(item.id)">Delete</b-button>
+        <b-button class="btn btn-danger" @click="deleteUser(item.id)"
+          >Delete</b-button
+        >
       </template>
     </b-table>
   </div>

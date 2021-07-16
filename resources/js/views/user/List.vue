@@ -29,12 +29,10 @@ export default {
         },
         {
           key: "name",
-          sortable: true,
         },
         {
           key: "id_role",
           label: "Roles",
-          sortable: true,
         },
         {
           key: "action",
@@ -42,11 +40,12 @@ export default {
         },
       ],
       items: [],
+      roles: [],
       isBusy: false,
     };
   },
   created() {
-    this.getUser();
+    this.getUser()
   },
   methods: {
     getUser() {
@@ -61,7 +60,7 @@ export default {
           console.log(err);
         });
     },
-
+    
     deleteUser(id) {
       this.$bvModal
         .msgBoxConfirm("Are you sure delete user?", {

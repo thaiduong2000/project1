@@ -1893,7 +1893,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
+//
 //
 //
 //
@@ -1910,24 +1913,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   data: function data() {
     return {
       technology: {
         name: ""
       },
-      foods: [{
-        text: "Select One",
-        value: null
-      }, "Carrots", "Beans", "Tomatoes", "Corn"]
+      isBtnDisabled: false
     };
   },
   methods: {
     handleChange: function handleChange(name, value) {
-      this.user[name] = value;
+      this.technology[name] = value;
+    },
+    create: function create() {
+      var _this = this;
+
+      this.isBtnDisabled = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/technologies", {
+        name: this.technology.name
+      }).then(function (response) {
+        _this.$router.push({
+          name: "ListTechnology"
+        });
+      });
     }
   }
 });
@@ -1945,7 +1958,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ListTechnology.vue */ "./resources/js/views/technologies/components/ListTechnology.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ListTechnology.vue */ "./resources/js/views/technologies/components/ListTechnology.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1957,27 +1982,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    ListTechnology: _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    ListTechnology: _components_ListTechnology_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   data: function data() {
     return {
-      technologies: [{
-        Id: 1,
-        Name: "Dickerson",
-        action: ""
+      fields: [{
+        key: "id",
+        sortable: true
       }, {
-        Id: 2,
-        Name: "Larsen"
+        key: "name"
       }, {
-        Id: 3,
-        Name: "Geneva"
-      }, {
-        Id: 4,
-        Name: "Jami"
-      }]
+        key: "action"
+      }],
+      items: [],
+      isBusy: false,
+      perPage: 0,
+      currentPage: 1,
+      total: 0
     };
+  },
+  created: function created() {
+    this.listTechnologies();
+  },
+  methods: {
+    handleChange: function handleChange(value) {
+      this.currentPage = value;
+      this.listTechnologies();
+    },
+    listTechnologies: function listTechnologies() {
+      var _this = this;
+
+      this.isBusy = !this.isBusy;
+      console.log(this.currentPage);
+      return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies?page=" + this.currentPage).then(function (response) {
+        var _response$data = response.data,
+            data = _response$data.data,
+            meta = _response$data.meta;
+        _this.items = data;
+        _this.perPage = meta.per_page; // // this.currentPage = meta.current_page;
+
+        _this.total = meta.total;
+        _this.isBusy = false;
+        console.log(_this.items);
+        return data;
+      });
+    },
+    deleteTechnology: function deleteTechnology(id) {
+      var _this2 = this;
+
+      this.$bvModal.msgBoxConfirm("Are you sure delete technology?", {
+        title: "Please Confirm",
+        size: "sm",
+        buttonSize: "sm",
+        okVariant: "danger",
+        okTitle: "YES",
+        cancelTitle: "NO",
+        footerClass: "p-2",
+        hideHeaderClose: false,
+        centered: true
+      }).then(function (value) {
+        if (value == true) {
+          axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/technologies/" + id).then(function (res) {
+            _this2.listTechnologies();
+          });
+        }
+      });
+    }
   }
 });
 
@@ -1994,7 +2067,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TechnologyForm.vue */ "./resources/js/views/technologies/components/TechnologyForm.vue");
+//
 //
 //
 //
@@ -2009,25 +2085,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    TechnologyForm: _components_TechnologyForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   data: function data() {
     return {
       technology: {
-        name: "technologies"
+        name: ""
       },
-      foods: [{
-        text: "Select One",
-        value: null
-      }, "Carrotss", "Beanss", "Tomatoes", "Corn"],
-      btnSubmitText: "Update"
+      btnSubmitText: "Update",
+      isBtnDisabled: false
     };
+  },
+  created: function created() {
+    this.get();
   },
   methods: {
     handleChange: function handleChange(name, value) {
-      this.user[name] = value;
+      this.technology[name] = value;
+    },
+    get: function get() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies/".concat(this.$route.params.id)).then(function (response) {
+        var data = response.data.data;
+        _this.technology = data;
+      });
+    },
+    update: function update() {
+      var _this2 = this;
+
+      this.isBtnDisabled = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().put("/api/technologies/".concat(this.$route.params.id), {
+        name: this.technology.name
+      }).then(function (response) {
+        _this2.$router.push({
+          name: "ListTechnology"
+        });
+      })["catch"](function (res) {
+        _this2.isBtnDisabled = false;
+      });
     }
   }
 });
@@ -2055,13 +2154,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    technologies: {
+    items: {
       type: Array,
       "default": function _default() {
         return [];
       }
+    },
+    fields: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    perPage: {
+      type: Number
+    },
+    currentPage: {
+      type: Number
+    },
+    total: {
+      type: Number
+    },
+    isBusy: {
+      type: Boolean
+    }
+  },
+  methods: {
+    handleChange: function handleChange(value) {
+      this.$emit("onHandleChange", value);
+    },
+    deleteTechnology: function deleteTechnology(id) {
+      this.$emit("onDeleteTechnology", id);
+    },
+    listTechnologies: function listTechnologies() {
+      this.$emit("onListTechnologies");
     }
   }
 });
@@ -2098,23 +2259,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     technology: {
       type: Object,
       "default": function _default() {}
     },
-    foods: {
-      type: Array,
-      "default": function _default() {}
-    },
     btnSubmitText: {
       type: String
+    },
+    isBtnDisabled: {
+      type: Boolean
     }
   },
   methods: {
     handleChange: function handleChange(name, value) {
       this.$emit("onHandleChange", name, value);
+    },
+    createOrUpdate: function createOrUpdate() {
+      this.$emit('onCreate');
+      this.$emit('onUpdate');
     }
   }
 });
@@ -2247,17 +2414,16 @@ __webpack_require__.r(__webpack_exports__);
         key: "id",
         sortable: true
       }, {
-        key: "name",
-        sortable: true
+        key: "name"
       }, {
         key: "id_role",
-        label: "Roles",
-        sortable: true
+        label: "Roles"
       }, {
         key: "action",
         label: "Actions"
       }],
       items: [],
+      roles: [],
       isBusy: false
     };
   },
@@ -2433,6 +2599,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     items: {
@@ -2550,7 +2718,7 @@ __webpack_require__.r(__webpack_exports__);
     handleChange: function handleChange(name, value) {
       this.$emit("onHandleChange", name, value);
     },
-    updateUser: function updateUser() {
+    createAndUpdateUser: function createAndUpdateUser() {
       this.$emit("onCreateUser");
       this.$emit("onUpdateUser");
     }
@@ -2570,7 +2738,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
+//
+//
 //
 //
 //
@@ -2587,9 +2759,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   data: function data() {
     return {
@@ -2597,15 +2770,40 @@ __webpack_require__.r(__webpack_exports__);
         name: "",
         technology_id: ""
       },
-      foods: [{
-        text: "Select One",
-        value: null
-      }, "Carrots", "Beans", "Tomatoes", "Corn"]
+      technologies: [],
+      isBtnDisabled: false
     };
+  },
+  created: function created() {
+    this.listTechnologies();
   },
   methods: {
     handleChange: function handleChange(name, value) {
-      this.user[name] = value;
+      this.vehicle[name] = value;
+    },
+    listTechnologies: function listTechnologies() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies").then(function (response) {
+        _this.technologies = response.data.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    createVehicles: function createVehicles() {
+      var _this2 = this;
+
+      this.isBtnDisabled = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/vehicles", {
+        name: this.vehicle.name,
+        technology_id: this.vehicle.technology_id
+      }).then(function (res) {
+        _this2.$router.push({
+          name: "ListVehicle"
+        });
+      })["catch"](function (err) {
+        _this2.isBtnDisabled = false;
+      });
     }
   }
 });
@@ -2623,7 +2821,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_ListVehicle_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/ListVehicle.vue */ "./resources/js/views/vehicles/components/ListVehicle.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_ListVehicle_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ListVehicle.vue */ "./resources/js/views/vehicles/components/ListVehicle.vue");
+//
+//
 //
 //
 //
@@ -2633,31 +2835,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    ListTechnology: _components_ListVehicle_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    ListTechnology: _components_ListVehicle_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   data: function data() {
     return {
-      vehicles: [{
-        Id: 1,
-        Name: "Dickerson",
-        roles: "role 1",
-        action: ""
+      fields: [{
+        key: "id",
+        sortable: true
       }, {
-        Id: 2,
-        Name: "Larsen",
-        roles: "role 2"
+        key: "name"
       }, {
-        Id: 3,
-        Name: "Geneva",
-        roles: "role 3"
+        key: "technology_id"
       }, {
-        Id: 4,
-        Name: "Jami",
-        roles: "role 4"
-      }]
+        key: "action"
+      }],
+      items: [],
+      isBusy: true,
+      isBtnDisabled: false
     };
+  },
+  created: function created() {
+    this.listVehicles();
+  },
+  methods: {
+    listVehicles: function listVehicles() {
+      var _this = this;
+
+      // this.isBusy = !this.isBusy;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/vehicles").then(function (response) {
+        var data = response.data.data;
+        _this.items = data;
+        _this.isBusy = false;
+      });
+    },
+    deleteVehicle: function deleteVehicle(id) {
+      var _this2 = this;
+
+      this.$bvModal.msgBoxConfirm("Are you sure delete vehicle?", {
+        title: "Please Confirm",
+        size: "sm",
+        buttonSize: "sm",
+        okVariant: "danger",
+        okTitle: "YES",
+        cancelTitle: "NO",
+        footerClass: "p-2",
+        hideHeaderClose: false,
+        centered: true
+      }).then(function (value) {
+        if (value == true) {
+          axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/vehicles/" + id).then(function (res) {
+            _this2.listVehicles();
+          });
+        }
+      });
+    }
   }
 });
 
@@ -2674,7 +2908,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/VehicleForm.vue */ "./resources/js/views/vehicles/components/VehicleForm.vue");
+//
+//
 //
 //
 //
@@ -2689,26 +2927,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
+    VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       vehicle: {
-        name: "duong",
-        technology_id: 1
+        name: "",
+        technology_id: ""
       },
-      foods: [{
-        text: "Select One",
-        value: null
-      }, "Carrots", "Beans", "Tomatoes", "Corn"],
-      btnSubmitText: "Update"
+      technologies: [],
+      isBtnDisabled: false
     };
+  },
+  created: function created() {
+    this.getVehicle();
+    this.listTechnologies();
   },
   methods: {
     handleChange: function handleChange(name, value) {
-      this.user[name] = value;
+      this.vehicle[name] = value;
+    },
+    getVehicle: function getVehicle() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/vehicles/".concat(this.$route.params.id)).then(function (response) {
+        var data = response.data.data;
+        _this.vehicle = {
+          name: data.name,
+          technology_id: data.technology_id
+        };
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    listTechnologies: function listTechnologies() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies").then(function (response) {
+        _this2.technologies = response.data.data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    updateVehicle: function updateVehicle() {
+      var _this3 = this;
+
+      this.isBtnDisabled = true;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().put("/api/vehicles/".concat(this.$route.params.id), {
+        name: this.vehicle.name,
+        technology_id: this.vehicle.technology_id
+      }).then(function (res) {
+        console.log(res);
+
+        _this3.$router.push({
+          name: "ListVehicle"
+        });
+      })["catch"](function (err) {
+        console.log(err);
+        _this3.isBtnDisabled = false;
+      });
     }
   }
 });
@@ -2736,13 +3017,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    vehicles: {
+    items: {
       type: Array,
       "default": function _default() {
         return [];
       }
+    },
+    fields: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    },
+    isBusy: {
+      type: Boolean
+    },
+    isBtnDisabled: {
+      type: Boolean
+    }
+  },
+  methods: {
+    deleteVehicle: function deleteVehicle(id) {
+      this.$emit("onDeleteVehicle", id);
     }
   }
 });
@@ -2789,23 +3101,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     vehicle: {
       type: Object,
       "default": function _default() {}
     },
-    foods: {
+    technologies: {
       type: Array,
-      "default": function _default() {}
+      "default": function _default() {
+        return [];
+      }
     },
     btnSubmitText: {
       type: String
+    },
+    isBtnDisabled: {
+      type: Boolean
     }
   },
   methods: {
     handleChange: function handleChange(name, value) {
       this.$emit("onHandleChange", name, value);
+    },
+    createOrUpdate: function createOrUpdate() {
+      this.$emit("onCreateVehicles");
+      this.$emit("onUpdateVehicles");
     }
   }
 });
@@ -2915,7 +3254,7 @@ var technologyRoutes = {
     name: "CreateTechnology",
     component: _views_technologies_Create__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
-    path: "update",
+    path: "update/:id",
     name: "UpdateTechnology",
     component: _views_technologies_Update__WEBPACK_IMPORTED_MODULE_2__.default
   }]
@@ -2992,15 +3331,15 @@ var userRoutes = {
   component: Layout,
   children: [{
     path: "",
-    name: "list.vehicles",
+    name: "ListVehicle",
     component: _views_vehicles_List__WEBPACK_IMPORTED_MODULE_0__.default
   }, {
     path: "create",
-    name: "create.vehicles",
+    name: "CreateVehiecle",
     component: _views_vehicles_Create__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
-    path: "update",
-    name: "update.vehicles",
+    path: "update/:id",
+    name: "UpdateVehicle",
     component: _views_vehicles_Update__WEBPACK_IMPORTED_MODULE_2__.default
   }]
 };
@@ -50509,9 +50848,9 @@ var render = function() {
             attrs: {
               btnSubmitText: "Create",
               technology: _vm.technology,
-              foods: _vm.foods
+              isBtnDisabled: _vm.isBtnDisabled
             },
-            on: { onHandleChange: _vm.handleChange }
+            on: { onHandleChange: _vm.handleChange, onCreate: _vm.create }
           })
         ],
         1
@@ -50550,18 +50889,32 @@ var render = function() {
         { staticClass: "d-flex justify-content-end" },
         [
           _c(
-            "b-link",
+            "router-link",
             {
               staticClass: "btn btn-success",
-              attrs: { href: "/technologies/create" }
+              attrs: { to: { name: "CreateTechnology" } }
             },
-            [_vm._v("Add new")]
+            [_vm._v("\n      Add new\n    ")]
           )
         ],
         1
       ),
       _vm._v(" "),
-      _c("ListTechnology", { attrs: { technologies: _vm.technologies } })
+      _c("ListTechnology", {
+        attrs: {
+          fields: _vm.fields,
+          isBusy: _vm.isBusy,
+          items: _vm.items,
+          perPage: _vm.perPage,
+          currentPage: _vm.currentPage,
+          total: _vm.total
+        },
+        on: {
+          onHandleChange: _vm.handleChange,
+          onDeleteTechnology: _vm.deleteTechnology,
+          onListTechnologies: _vm.listTechnologies
+        }
+      })
     ],
     1
   )
@@ -50598,9 +50951,9 @@ var render = function() {
           attrs: {
             btnSubmitText: "Update",
             technology: _vm.technology,
-            foods: _vm.foods
+            isBtnDisabled: _vm.isBtnDisabled
           },
-          on: { onHandleChange: _vm.handleChange }
+          on: { onHandleChange: _vm.handleChange, onUpdate: _vm.update }
         })
       ],
       1
@@ -50634,30 +50987,90 @@ var render = function() {
     "div",
     [
       _c("b-table", {
-        attrs: { striped: "", hover: "", items: _vm.technologies },
+        attrs: {
+          id: "my-table",
+          busy: _vm.isBusy,
+          items: _vm.items,
+          fields: _vm.fields,
+          "current-page": _vm.currentPage,
+          "per-page": _vm.perPage,
+          striped: "",
+          small: "",
+          "primary-key": "identifier"
+        },
         scopedSlots: _vm._u([
           {
-            key: "cell(action)",
+            key: "table-busy",
             fn: function() {
               return [
                 _c(
-                  "b-link",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { href: "/technologies/update" }
-                  },
-                  [_vm._v("Update")]
-                ),
-                _vm._v(" "),
-                _c("b-button", { attrs: { variant: "danger" } }, [
-                  _vm._v("Delete")
-                ])
+                  "div",
+                  { staticClass: "text-center text-danger my-2" },
+                  [
+                    _c("b-spinner", { staticClass: "align-middle" }),
+                    _vm._v(" "),
+                    _c("strong", [_vm._v("Loading...")])
+                  ],
+                  1
+                )
               ]
             },
             proxy: true
+          },
+          {
+            key: "cell(action)",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: {
+                      to: { name: "UpdateTechnology", params: { id: item.id } }
+                    }
+                  },
+                  [_vm._v("\n        Update\n      ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    staticClass: "btn btn-danger",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteTechnology(item.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ]
+            }
           }
         ])
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-end" },
+        [
+          _c("b-pagination", {
+            attrs: {
+              value: _vm.currentPage,
+              "total-rows": _vm.total,
+              "per-page": _vm.perPage,
+              "aria-controls": "my-table"
+            },
+            on: {
+              input: function($event) {
+                return _vm.handleChange($event)
+              }
+            }
+          })
+        ],
+        1
+      )
     ],
     1
   )
@@ -50713,9 +51126,29 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
-            _vm._v(_vm._s(_vm.btnSubmitText))
-          ])
+          _c(
+            "b-button",
+            {
+              attrs: {
+                disabled: _vm.isBtnDisabled,
+                type: "submit",
+                variant: "primary"
+              },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.createOrUpdate.apply(null, arguments)
+                }
+              }
+            },
+            [
+              _vm._v("\n      " + _vm._s(_vm.btnSubmitText) + "\n      "),
+              _vm.isBtnDisabled
+                ? _c("b-spinner", { attrs: { small: "", label: "Spinning" } })
+                : _vm._e()
+            ],
+            1
+          )
         ],
         1
       )
@@ -51086,7 +51519,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  return _vm.updateUser.apply(null, arguments)
+                  return _vm.createAndUpdateUser.apply(null, arguments)
                 }
               }
             },
@@ -51138,9 +51571,13 @@ var render = function() {
             attrs: {
               btnSubmitText: "Create",
               vehicle: _vm.vehicle,
-              foods: _vm.foods
+              technologies: _vm.technologies,
+              isBtnDisabled: _vm.isBtnDisabled
             },
-            on: { onHandleChange: _vm.handleChange }
+            on: {
+              onHandleChange: _vm.handleChange,
+              onCreateVehicles: _vm.createVehicles
+            }
           })
         ],
         1
@@ -51179,18 +51616,26 @@ var render = function() {
         { staticClass: "d-flex justify-content-end" },
         [
           _c(
-            "b-link",
+            "router-link",
             {
               staticClass: "btn btn-success",
-              attrs: { href: "/vehicles/create" }
+              attrs: { to: "/vehicles/create" }
             },
-            [_vm._v("Add new")]
+            [_vm._v("\n      Add new\n    ")]
           )
         ],
         1
       ),
       _vm._v(" "),
-      _c("ListTechnology", { attrs: { vehicles: _vm.vehicles } })
+      _c("ListTechnology", {
+        attrs: {
+          items: _vm.items,
+          fields: _vm.fields,
+          isBusy: _vm.isBusy,
+          isBtnDisabled: _vm.isBtnDisabled
+        },
+        on: { onDeleteVehicle: _vm.deleteVehicle }
+      })
     ],
     1
   )
@@ -51227,9 +51672,13 @@ var render = function() {
           attrs: {
             btnSubmitText: "Update",
             vehicle: _vm.vehicle,
-            foods: _vm.foods
+            technologies: _vm.technologies,
+            isBtnDisabled: _vm.isBtnDisabled
           },
-          on: { onHandleChange: _vm.handleChange }
+          on: {
+            onHandleChange: _vm.handleChange,
+            onUpdateVehicles: _vm.updateVehicle
+          }
         })
       ],
       1
@@ -51263,27 +51712,70 @@ var render = function() {
     "div",
     [
       _c("b-table", {
-        attrs: { striped: "", hover: "", items: _vm.vehicles },
+        attrs: {
+          striped: "",
+          hover: "",
+          items: _vm.items,
+          fields: _vm.fields,
+          busy: _vm.isBusy
+        },
         scopedSlots: _vm._u([
           {
-            key: "cell(action)",
+            key: "table-busy",
             fn: function() {
               return [
                 _c(
-                  "b-link",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { href: "/vehicles/update" }
-                  },
-                  [_vm._v("Update")]
-                ),
-                _vm._v(" "),
-                _c("b-button", { attrs: { variant: "danger" } }, [
-                  _vm._v("Delete")
-                ])
+                  "div",
+                  { staticClass: "text-center text-danger my-2" },
+                  [
+                    _c("b-spinner", { staticClass: "align-middle" }),
+                    _vm._v(" "),
+                    _c("strong", [_vm._v("Loading...")])
+                  ],
+                  1
+                )
               ]
             },
             proxy: true
+          },
+          {
+            key: "cell(action)",
+            fn: function(ref) {
+              var item = ref.item
+              return [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: {
+                      to: { name: "UpdateVehicle", params: { id: item.id } }
+                    }
+                  },
+                  [_vm._v("\n        Update\n      ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: { variant: "danger" },
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteVehicle(item.id)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v("Delete\n        "),
+                    _vm.isBtnDisabled
+                      ? _c("b-spinner", {
+                          attrs: { small: "", label: "Spinning" }
+                        })
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ]
+            }
           }
         ])
       })
@@ -51352,26 +51844,68 @@ var render = function() {
               }
             },
             [
-              _c("b-form-select", {
-                attrs: {
-                  id: "input-3",
-                  value: _vm.vehicle.technology_id,
-                  options: _vm.foods,
-                  required: ""
-                },
-                on: {
-                  input: function($event) {
-                    return _vm.handleChange("technology_id", $event)
+              _c(
+                "b-form-select",
+                {
+                  attrs: {
+                    id: "input-3",
+                    value: _vm.vehicle.technology_id,
+                    required: ""
+                  },
+                  on: {
+                    input: function($event) {
+                      return _vm.handleChange("technology_id", $event)
+                    }
                   }
-                }
-              })
+                },
+                [
+                  _c("b-form-select-option", { attrs: { value: "" } }, [
+                    _vm._v("Please select an option")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.technologies, function(technology) {
+                    return _c(
+                      "b-form-select-option",
+                      { key: technology.id, attrs: { value: technology.id } },
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(technology.name) +
+                            "\n        "
+                        )
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
             ],
             1
           ),
           _vm._v(" "),
-          _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
-            _vm._v(_vm._s(_vm.btnSubmitText))
-          ])
+          _c(
+            "b-button",
+            {
+              attrs: {
+                type: "submit",
+                disabled: _vm.isBtnDisabled,
+                variant: "primary"
+              },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.createOrUpdate.apply(null, arguments)
+                }
+              }
+            },
+            [
+              _vm._v("\n      " + _vm._s(_vm.btnSubmitText) + "\n      "),
+              _vm.isBtnDisabled
+                ? _c("b-spinner", { attrs: { small: "", label: "Spinning" } })
+                : _vm._e()
+            ],
+            1
+          )
         ],
         1
       )

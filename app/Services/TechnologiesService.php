@@ -8,10 +8,10 @@ class TechnologiesService
 {
     public function index()
     {
-        return Technologies::paginate(3);
+        return Technologies::paginate(6);
     }
 
-    public function create($request)
+    public function store($request)
     {
         $technology = new Technologies;
         $technologies = Technologies::all();

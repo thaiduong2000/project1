@@ -5,8 +5,9 @@
         <TechnologyForm
           btnSubmitText="Create"
           :technology="technology"
-          :foods="foods"
+          :isBtnDisabled="isBtnDisabled"
           @onHandleChange="handleChange"
+          @onCreate="create"
         />
       </div>
     </div>
@@ -14,29 +15,34 @@
 </template>
 
 <script>
+import axios from "axios";
 import TechnologyForm from "./components/TechnologyForm.vue";
 export default {
   components: {
     TechnologyForm,
   },
-  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data() {
     return {
       technology: {
         name: "",
       },
-      foods: [
-        { text: "Select One", value: null },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Corn",
-      ],
+      isBtnDisabled: false,
     };
   },
   methods: {
     handleChange(name, value) {
-      this.user[name] = value;
+      this.technology[name] = value;
+    },
+
+    create() {
+      this.isBtnDisabled = true
+      axios
+        .post(`/api/technologies`, {
+          name: this.technology.name,
+        })
+        .then((response) => {
+          this.$router.push({ name: "ListTechnology" });
+        });
     },
   },
 };
