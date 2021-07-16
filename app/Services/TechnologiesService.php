@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Technologies;
 
-class TechnologiesService{
-
+class TechnologiesService
+{
     public function index()
     {
-        return Technologies::all();
+        return Technologies::paginate(3);
     }
 
     public function create($request)
@@ -18,28 +19,32 @@ class TechnologiesService{
         $technology->name = $request->name;
         $technology->order_no = $countTechnologies;
         $technology->save();
+        return $technology;
     }
 
-    public function get($id)
+    public function show($id)
     {
-       return Technologies::FindOrFail($id);
+        return Technologies::FindOrFail($id);
     }
 
-    public function update($request)
+    public function update($request, $id)
     {
-        $technology = Technologies::FindOrFail($request->id);
+        $technology = Technologies::FindOrFail($id);
         $technology->name = $request->name;
         $technology->update();
+        return $technology;
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $technology = Technologies::FindOrFail($id);
         $technology->delete();
         $technologies = Technologies::all();
-        foreach($technologies as $index => $technology){
-            $technology->order_no = $index;
-            $technology->update();
+        foreach ($technologies as $index => $item) {
+            $item->order_no = $index;
+            $item->update();
         }
+        return $technology;
+        
     }
 }

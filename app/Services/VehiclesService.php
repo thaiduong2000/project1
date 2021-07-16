@@ -3,37 +3,40 @@ namespace App\Services;
 
 use App\Models\Vehicles;
 
-class VehiclesService{
-
+class VehiclesService
+{
     public function index()
     {
-        return Vehicles::all();
+        return Vehicles::paginate(3);
     }
 
-    public function create($request)
+    public function store($request)
     {
         $vehicle = new Vehicles;
         $vehicle->name = $request->name;
         $vehicle->technology_id = $request->technology_id;
         $vehicle->save();
+        return $vehicle;
     }
 
-    public function get($id)
+    public function show($id)
     {
-       return Vehicles::FindOrFail($id);
+        return Vehicles::FindOrFail($id);
     }
 
-    public function update($request)
+    public function update($request, $id)
     {
-        $vehicle = Vehicles::FindOrFail($request->id);
+        $vehicle = Vehicles::FindOrFail($id);
         $vehicle->name = $request->name;
-        $vehicle->technology_id  = $request->technology_id;
+        $vehicle->technology_id = $request->technology_id;
         $vehicle->update();
+        return $vehicle;
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $vehicle = Vehicles::FindOrFail($id);
         $vehicle->delete();
+        return $vehicle;
     }
 }

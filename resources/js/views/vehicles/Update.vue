@@ -17,6 +17,7 @@ export default {
   components: {
     VehicleForm,
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data() {
     return {
       vehicle: {

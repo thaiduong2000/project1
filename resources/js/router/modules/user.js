@@ -23,7 +23,7 @@ const userRoutes =
       component: Create,
     },
     {
-      path: "update",
+      path: "update/:id",
       name: "UpdateUser",
       component: Update,
     },

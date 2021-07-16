@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.25",
@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.21.2",
+        "vue-axios": "^3.2.4",
         "vue-router": "^3.5.2"
     }
 }

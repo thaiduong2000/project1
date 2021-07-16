@@ -23,7 +23,7 @@ const technologyRoutes =
       component: Create,
     },
     {
-      path: "update",
+      path: "update/:id",
       name: "UpdateTechnology",
       component: Update,
     },

@@ -12,6 +12,7 @@ export default {
   components: {
     ListTechnology,
   },
+  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data() {
     return {
       vehicles: [

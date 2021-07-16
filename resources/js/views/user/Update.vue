@@ -4,14 +4,17 @@
       <UserForm
         btnSubmitText="Update"
         :user="user"
-        :foods="foods"
+        :roles="roles"
+        :isBtnDisabled="isBtnDisabled"
         @onHandleChange="handleChange"
+        @onUpdateUser="updateUser"
       />
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import UserForm from "./components/UserForm.vue";
 export default {
   components: {
@@ -20,25 +23,64 @@ export default {
   data() {
     return {
       user: {
-        name: "duong",
-        password: "123123",
-        id_role: 1,
+        name: "",
+        password: "",
+        id_role: "",
       },
-      foods: [
-        { text: "Select One", value: null },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Corn",
-      ],
-      btnSubmitText: "Update",
+      roles: [],
+      isBtnDisabled: false,
     };
+  },
+  created() {
+    this.getUser()
+    this.listRoles()
   },
   methods: {
     handleChange(name, value) {
-      console.log(name, value);
       this.user[name] = value;
     },
+
+    getUser(){
+      axios
+        .get(`/api/users/${this.$route.params.id}`)
+        .then((response) => {
+          const { data } = response.data
+          this.user = {
+            name: data.name,
+            password: "",
+            id_role: data.id_role,
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    listRoles() {
+      axios
+        .get(`/api/roles`)
+        .then((response) => {
+          this.roles = response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    updateUser(){
+      this.isBtnDisabled = true
+      axios
+        .put(`/api/users/${this.$route.params.id}`, {
+          name: this.user.name,
+          password: this.user.password,
+          id_role: this.user.id_role,
+        })
+        .then((res) => {
+          this.$router.push({ name: "ListUser" });
+        })
+        .catch((err) => {
+          this.isBtnDisabled = false;
+        });
+    }
   },
 };
 </script>
