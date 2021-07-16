@@ -20,35 +20,33 @@ class TechnologiesController extends Controller
         return view('technologies.index',compact('technologies'));
     }
 
-    public function viewAddTechnology()
+    public function viewAdd()
     {
-        return view('technologies.add_technology');
+        return view('technologies.add');
     }
 
-    public function createTechnology(Request $request)
+    public function create(Request $request)
     {
-        $this->technologyService->createTechnology($request);
-        return back()->with('success','thêm mới thành công !');
+        $this->technologyService->create($request);
+        return back()->with('success','Create Successful!');
     }
 
-    public function getTechnology($id)
+    public function get($id)
     {
-
-        $technology = $this->technologyService->getTechnology($id);
-        return view('technologies.update_technology',compact('technology'));
-
+        $technology = $this->technologyService->get($id);
+        return view('technologies.update',compact('technology'));
     }
 
-    public function updateTechnology(Request $request)
+    public function update(Request $request)
     {
-        $technology = $this->technologyService->updateTechnology($request);
-        return back()->with('success','cập nhật người dùng thành công !');
+        $technology = $this->technologyService->update($request);
+        return back()->with('success','Update Successful!');
     }
 
-    public function deleteTechnology($id)
+    public function delete($id)
     {
-        $this->technologyService->deleteTechnology($id);
-        return back()->with('success','Xóa người dùng thành công !');
+        $this->technologyService->delete($id);
+        return back()->with('success','Delete Successful!');
     }
 
 }

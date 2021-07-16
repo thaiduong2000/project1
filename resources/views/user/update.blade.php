@@ -25,7 +25,7 @@
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">id_role</label>
       <select class="form-select" name="id_role"   aria-label="Default select example">
-          @foreach ($role as $item)
+          @foreach ($roles as $item)
               <option selected value="{{ $item->id }}">{{ $item->name}}</option>   
           @endforeach
         </select>
