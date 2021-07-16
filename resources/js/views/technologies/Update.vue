@@ -4,14 +4,9 @@
       <TechnologyForm
         btnSubmitText="Update"
         :technology="technology"
-<<<<<<< HEAD
         :isBtnDisabled="isBtnDisabled"
         @onHandleChangeValue="handleChangeValue"
         @onUpdateTechnology="updateTechnology"
-=======
-        :foods="foods"
-        @onHandleChange="handleChange"
->>>>>>> b748ac3feb61722e33150db130165ce37551985f
       />
     </div>
   </div>

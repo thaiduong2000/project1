@@ -2085,11 +2085,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -51040,22 +51035,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "col-md-6 offset-3" },
+      [
+        _c("TechnologyForm", {
+          attrs: {
+            btnSubmitText: "Update",
+            technology: _vm.technology,
+            isBtnDisabled: _vm.isBtnDisabled
+          },
+          on: {
+            onHandleChangeValue: _vm.handleChangeValue,
+            onUpdateTechnology: _vm.updateTechnology
+          }
+        })
+      ],
+      1
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 offset-3" }, [
-        _vm._v(
-          '\n<<<<<<< HEAD\n        :isBtnDisabled="isBtnDisabled"\n        @onHandleChangeValue="handleChangeValue"\n        @onUpdateTechnology="updateTechnology"\n=======\n        :foods="foods"\n        @onHandleChange="handleChange"\n>>>>>>> b748ac3feb61722e33150db130165ce37551985f\n      />\n    '
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
