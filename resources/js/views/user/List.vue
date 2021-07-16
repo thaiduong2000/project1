@@ -79,7 +79,6 @@ export default {
           console.log(err);
         });
     },
-
     deleteUser(id) {
       this.$bvModal
         .msgBoxConfirm("Are you sure delete user?", {

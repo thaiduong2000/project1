@@ -1927,10 +1927,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    handleChange: function handleChange(name, value) {
+    handleChangeValue: function handleChangeValue(name, value) {
       this.technology[name] = value;
     },
-    create: function create() {
+    createTechnology: function createTechnology() {
       var _this = this;
 
       this.isBtnDisabled = true;
@@ -2101,13 +2101,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.get();
+    this.getTechnology();
   },
   methods: {
-    handleChange: function handleChange(name, value) {
+    handleChangeValue: function handleChangeValue(name, value) {
       this.technology[name] = value;
     },
-    get: function get() {
+    getTechnology: function getTechnology() {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies/".concat(this.$route.params.id)).then(function (response) {
@@ -2115,7 +2115,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.technology = data;
       });
     },
-    update: function update() {
+    updateTechnology: function updateTechnology() {
       var _this2 = this;
 
       this.isBtnDisabled = true;
@@ -2271,12 +2271,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    handleChange: function handleChange(name, value) {
-      this.$emit("onHandleChange", name, value);
+    handleChangeValue: function handleChangeValue(name, value) {
+      this.$emit("onHandleChangeValue", name, value);
     },
     createOrUpdate: function createOrUpdate() {
-      this.$emit('onCreate');
-      this.$emit('onUpdate');
+      this.$emit('onCreateTechnology');
+      this.$emit('onUpdateTechnology');
     }
   }
 });
@@ -2548,8 +2548,6 @@ __webpack_require__.r(__webpack_exports__);
           password: "",
           id_role: data.id_role
         };
-      })["catch"](function (err) {
-        console.log(err);
       });
     },
     listRoles: function listRoles() {
@@ -2557,8 +2555,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/roles").then(function (response) {
         _this2.roles = response.data;
-      })["catch"](function (err) {
-        console.log(err);
       });
     },
     updateUser: function updateUser() {
@@ -2825,7 +2821,7 @@ __webpack_require__.r(__webpack_exports__);
     this.listTechnologies();
   },
   methods: {
-    handleChange: function handleChange(name, value) {
+    handleChangeValue: function handleChangeValue(name, value) {
       this.vehicle[name] = value;
     },
     listTechnologies: function listTechnologies() {
@@ -2833,8 +2829,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies").then(function (response) {
         _this.technologies = response.data.data;
-      })["catch"](function (err) {
-        console.log(err);
       });
     },
     createVehicles: function createVehicles() {
@@ -2881,6 +2875,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2901,26 +2905,43 @@ __webpack_require__.r(__webpack_exports__);
       }],
       items: [],
       isBusy: true,
-      isBtnDisabled: false
+      isBtnDisabled: false,
+      pagination: {
+        perPage: 0,
+        currentPage: 1,
+        total: 0
+      }
     };
   },
   created: function created() {
     this.listVehicles();
   },
   methods: {
+    handleChangeCurrentPage: function handleChangeCurrentPage(value) {
+      this.currentPage = value;
+      this.listVehicles();
+    },
     listVehicles: function listVehicles() {
       var _this = this;
 
-      // this.isBusy = !this.isBusy;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/vehicles").then(function (response) {
-        var data = response.data.data;
+      this.isBusy = !this.isBusy;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/vehicles?page=" + this.currentPage).then(function (response) {
+        var _response$data = response.data,
+            data = _response$data.data,
+            meta = _response$data.meta;
         _this.items = data;
+        _this.pagination = {
+          perPage: meta.per_page,
+          currentPage: meta.current_page,
+          total: meta.total
+        };
         _this.isBusy = false;
       });
     },
     deleteVehicle: function deleteVehicle(id) {
       var _this2 = this;
 
+      this.isBtnDisabled = true;
       this.$bvModal.msgBoxConfirm("Are you sure delete vehicle?", {
         title: "Please Confirm",
         size: "sm",
@@ -2935,6 +2956,8 @@ __webpack_require__.r(__webpack_exports__);
         if (value == true) {
           axios__WEBPACK_IMPORTED_MODULE_0___default().delete("/api/vehicles/" + id).then(function (res) {
             _this2.listVehicles();
+
+            _this2.isBtnDisabled = false;
           });
         }
       });
@@ -2979,7 +3002,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VehicleForm: _components_VehicleForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data: function data() {
     return {
       vehicle: {
@@ -2995,7 +3017,7 @@ __webpack_require__.r(__webpack_exports__);
     this.listTechnologies();
   },
   methods: {
-    handleChange: function handleChange(name, value) {
+    handleChangeValue: function handleChangeValue(name, value) {
       this.vehicle[name] = value;
     },
     getVehicle: function getVehicle() {
@@ -3007,8 +3029,6 @@ __webpack_require__.r(__webpack_exports__);
           name: data.name,
           technology_id: data.technology_id
         };
-      })["catch"](function (err) {
-        console.log(err);
       });
     },
     listTechnologies: function listTechnologies() {
@@ -3016,8 +3036,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/technologies").then(function (response) {
         _this2.technologies = response.data.data;
-      })["catch"](function (err) {
-        console.log(err);
       });
     },
     updateVehicle: function updateVehicle() {
@@ -3078,6 +3096,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     items: {
@@ -3092,6 +3126,15 @@ __webpack_require__.r(__webpack_exports__);
         return [];
       }
     },
+    perPage: {
+      type: Number
+    },
+    currentPage: {
+      type: Number
+    },
+    total: {
+      type: Number
+    },
     isBusy: {
       type: Boolean
     },
@@ -3100,6 +3143,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    handleChangeCurrentPage: function handleChangeCurrentPage(value) {
+      this.$emit("onHandleChangeCurrentPage", value);
+    },
     deleteVehicle: function deleteVehicle(id) {
       this.$emit("onDeleteVehicle", id);
     }
@@ -3119,8 +3165,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
 //
 //
 //
@@ -3186,8 +3230,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    handleChange: function handleChange(name, value) {
-      this.$emit("onHandleChange", name, value);
+    handleChangeValue: function handleChangeValue(name, value) {
+      this.$emit("onHandleChangeValue", name, value);
     },
     createOrUpdate: function createOrUpdate() {
       this.$emit("onCreateVehicles");
@@ -50897,7 +50941,10 @@ var render = function() {
               technology: _vm.technology,
               isBtnDisabled: _vm.isBtnDisabled
             },
-            on: { onHandleChange: _vm.handleChange, onCreate: _vm.create }
+            on: {
+              onHandleChangeValue: _vm.handleChangeValue,
+              onCreateTechnology: _vm.createTechnology
+            }
           })
         ],
         1
@@ -50999,7 +51046,10 @@ var render = function() {
             technology: _vm.technology,
             isBtnDisabled: _vm.isBtnDisabled
           },
-          on: { onHandleChange: _vm.handleChange, onUpdate: _vm.update }
+          on: {
+            onHandleChangeValue: _vm.handleChangeValue,
+            onUpdateTechnology: _vm.updateTechnology
+          }
         })
       ],
       1
@@ -51163,7 +51213,7 @@ var render = function() {
                 },
                 on: {
                   input: function($event) {
-                    return _vm.handleChange("name", $event)
+                    return _vm.handleChangeValue("name", $event)
                   }
                 }
               })
@@ -51654,7 +51704,7 @@ var render = function() {
               isBtnDisabled: _vm.isBtnDisabled
             },
             on: {
-              onHandleChange: _vm.handleChange,
+              onHandleChangeValue: _vm.handleChangeValue,
               onCreateVehicles: _vm.createVehicles
             }
           })
@@ -51711,9 +51761,15 @@ var render = function() {
           items: _vm.items,
           fields: _vm.fields,
           isBusy: _vm.isBusy,
+          perPage: _vm.pagination.perPage,
+          currentPage: _vm.pagination.currentPage,
+          total: _vm.pagination.total,
           isBtnDisabled: _vm.isBtnDisabled
         },
-        on: { onDeleteVehicle: _vm.deleteVehicle }
+        on: {
+          onHandleChangeCurrentPage: _vm.handleChangeCurrentPage,
+          onDeleteVehicle: _vm.deleteVehicle
+        }
       })
     ],
     1
@@ -51755,7 +51811,7 @@ var render = function() {
             isBtnDisabled: _vm.isBtnDisabled
           },
           on: {
-            onHandleChange: _vm.handleChange,
+            onHandleChangeValue: _vm.handleChangeValue,
             onUpdateVehicles: _vm.updateVehicle
           }
         })
@@ -51792,11 +51848,14 @@ var render = function() {
     [
       _c("b-table", {
         attrs: {
-          striped: "",
-          hover: "",
+          id: "my-table",
+          busy: _vm.isBusy,
           items: _vm.items,
           fields: _vm.fields,
-          busy: _vm.isBusy
+          "current-page": _vm.currentPage,
+          striped: "",
+          small: "",
+          "primary-key": "identifier"
         },
         scopedSlots: _vm._u([
           {
@@ -51843,21 +51902,34 @@ var render = function() {
                       }
                     }
                   },
-                  [
-                    _vm._v("Delete\n        "),
-                    _vm.isBtnDisabled
-                      ? _c("b-spinner", {
-                          attrs: { small: "", label: "Spinning" }
-                        })
-                      : _vm._e()
-                  ],
-                  1
+                  [_vm._v("Delete")]
                 )
               ]
             }
           }
         ])
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-end" },
+        [
+          _c("b-pagination", {
+            attrs: {
+              value: _vm.currentPage,
+              "total-rows": _vm.total,
+              "per-page": _vm.perPage,
+              "aria-controls": "my-table"
+            },
+            on: {
+              input: function($event) {
+                return _vm.handleChangeCurrentPage($event)
+              }
+            }
+          })
+        ],
+        1
+      )
     ],
     1
   )
@@ -51905,7 +51977,7 @@ var render = function() {
                 },
                 on: {
                   input: function($event) {
-                    return _vm.handleChange("name", $event)
+                    return _vm.handleChangeValue("name", $event)
                   }
                 }
               })
@@ -51933,7 +52005,7 @@ var render = function() {
                   },
                   on: {
                     input: function($event) {
-                      return _vm.handleChange("technology_id", $event)
+                      return _vm.handleChangeValue("technology_id", $event)
                     }
                   }
                 },

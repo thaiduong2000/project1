@@ -5,7 +5,7 @@
         <b-form-input
           class=""
           :value="vehicle.name"
-          @input="handleChange('name', $event)"
+          @input="handleChangeValue('name', $event)"
           type="text"
           placeholder="Enter name"
           required
@@ -17,11 +17,9 @@
           id="input-3"
           :value="vehicle.technology_id"
           required
-          @input="handleChange('technology_id', $event)"
+          @input="handleChangeValue('technology_id', $event)"
         >
-          <b-form-select-option value=""
-            >Please select an option</b-form-select-option
-          >
+          <b-form-select-option value="">Please select an option</b-form-select-option>
           <b-form-select-option
             v-for="technology in technologies"
             :value="technology.id"
@@ -64,8 +62,8 @@ export default {
     },
   },
   methods: {
-    handleChange(name, value) {
-      this.$emit("onHandleChange", name, value);
+    handleChangeValue(name, value) {
+      this.$emit("onHandleChangeValue", name, value);
     },
     createOrUpdate() {
       this.$emit("onCreateVehicles");

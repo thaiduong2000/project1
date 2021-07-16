@@ -6,8 +6,8 @@
           btnSubmitText="Create"
           :technology="technology"
           :isBtnDisabled="isBtnDisabled"
-          @onHandleChange="handleChange"
-          @onCreate="create"
+          @onHandleChangeValue="handleChangeValue"
+          @onCreateTechnology="createTechnology"
         />
       </div>
     </div>
@@ -30,11 +30,10 @@ export default {
     };
   },
   methods: {
-    handleChange(name, value) {
+    handleChangeValue(name, value) {
       this.technology[name] = value;
     },
-
-    create() {
+    createTechnology() {
       this.isBtnDisabled = true
       axios
         .post(`/api/technologies`, {

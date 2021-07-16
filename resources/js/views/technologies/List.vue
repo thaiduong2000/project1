@@ -71,7 +71,6 @@ export default {
           this.isBusy = false;
         });
     },
-
     deleteTechnology(id) {
       this.$bvModal
         .msgBoxConfirm("Are you sure delete technology?", {

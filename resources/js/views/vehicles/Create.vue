@@ -7,7 +7,7 @@
           :vehicle="vehicle"
           :technologies="technologies"
           :isBtnDisabled="isBtnDisabled"
-          @onHandleChange="handleChange"
+          @onHandleChangeValue="handleChangeValue"
           @onCreateVehicles="createVehicles"
         />
       </div>
@@ -33,10 +33,10 @@ export default {
     };
   },
   created() {
-    this.listTechnologies()
+    this.listTechnologies();
   },
   methods: {
-    handleChange(name, value) {
+    handleChangeValue(name, value) {
       this.vehicle[name] = value;
     },
     listTechnologies() {
@@ -45,9 +45,6 @@ export default {
         .then((response) => {
           this.technologies = response.data.data;
         })
-        .catch((err) => {
-          console.log(err);
-        });
     },
     createVehicles() {
       this.isBtnDisabled = true;

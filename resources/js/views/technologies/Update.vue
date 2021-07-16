@@ -5,8 +5,8 @@
         btnSubmitText="Update"
         :technology="technology"
         :isBtnDisabled="isBtnDisabled"
-        @onHandleChange="handleChange"
-        @onUpdate="update"
+        @onHandleChangeValue="handleChangeValue"
+        @onUpdateTechnology="updateTechnology"
       />
     </div>
   </div>
@@ -26,18 +26,16 @@ export default {
       },
       btnSubmitText: "Update",
       isBtnDisabled: false,
-
     };
   },
   created() {
-    this.get();
+    this.getTechnology();
   },
   methods: {
-    handleChange(name, value) {
+    handleChangeValue(name, value) {
       this.technology[name] = value;
     },
-
-    get() {
+    getTechnology() {
       axios
         .get(`/api/technologies/${this.$route.params.id}`)
         .then((response) => {
@@ -45,8 +43,7 @@ export default {
           this.technology = data
         });
     },
-
-    update(){
+    updateTechnology(){
       this.isBtnDisabled = true
       axios.put(`/api/technologies/${this.$route.params.id}`,{
         name: this.technology.name

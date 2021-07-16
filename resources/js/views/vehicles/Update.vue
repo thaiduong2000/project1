@@ -6,7 +6,7 @@
         :vehicle="vehicle"
         :technologies="technologies"
         :isBtnDisabled="isBtnDisabled"
-        @onHandleChange="handleChange"
+        @onHandleChangeValue="handleChangeValue"
         @onUpdateVehicles="updateVehicle"
       />
     </div>
@@ -20,7 +20,6 @@ export default {
   components: {
     VehicleForm,
   },
-  // TODO: chưa xử lý gọi api và đang set cứng dữ liệu
   data() {
     return {
       vehicle: {
@@ -36,7 +35,7 @@ export default {
     this.listTechnologies();
   },
   methods: {
-    handleChange(name, value) {
+    handleChangeValue(name, value) {
       this.vehicle[name] = value;
     },
     getVehicle() {
@@ -49,9 +48,6 @@ export default {
             technology_id: data.technology_id,
           };
         })
-        .catch((err) => {
-          console.log(err);
-        });
     },
     listTechnologies() {
       axios
@@ -59,9 +55,6 @@ export default {
         .then((response) => {
           this.technologies = response.data.data;
         })
-        .catch((err) => {
-          console.log(err);
-        });
     },
     updateVehicle() {
       this.isBtnDisabled = true;

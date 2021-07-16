@@ -5,7 +5,7 @@
         <b-form-input
           class=""
           :value="technology.name"
-          @input="handleChange('name', $event)"
+          @input="handleChangeValue('name', $event)"
           type="text"
           placeholder="Enter name"
           required
@@ -35,12 +35,12 @@ export default {
     }
   },
   methods: {
-    handleChange(name, value) {
-      this.$emit("onHandleChange", name, value);
+    handleChangeValue(name, value) {
+      this.$emit("onHandleChangeValue", name, value);
     },
     createOrUpdate(){
-      this.$emit('onCreate')
-      this.$emit('onUpdate')
+      this.$emit('onCreateTechnology')
+      this.$emit('onUpdateTechnology')
     }
   },
 };

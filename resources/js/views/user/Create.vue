@@ -40,7 +40,6 @@ export default {
     handleChange(name, value) {
       this.user[name] = value;
     },
-
     listRoles() {
       axios
         .get(`/api/roles`)
@@ -51,7 +50,6 @@ export default {
           console.log(err);
         });
     },
-
     createUser() {
       this.isBtnDisabled = true;
       axios
