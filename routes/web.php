@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/{any}', 'App\Http\Controllers\SpaController@index')->where('any', '.*');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,8 +27,6 @@ Route::prefix('users')->group(function () {
     Route::delete('/{id}', 'App\Http\Controllers\UserController@delete')->name('deleteUser');
 });
 
-
-//route technologies
 Route::prefix('technologies')->group(function () {
     Route::get('/','App\Http\Controllers\TechnologiesController@index');
     Route::get('/add', 'App\Http\Controllers\TechnologiesController@viewAdd')->name('viewAddTechnology');
