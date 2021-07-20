@@ -5,7 +5,7 @@
         <b-form-input
           class=""
           :value="vehicle.name"
-          @input="handleChange('name', $event)"
+          @input="handleChangeValue('name', $event)"
           type="text"
           placeholder="Enter name"
           required
@@ -16,13 +16,29 @@
         <b-form-select
           id="input-3"
           :value="vehicle.technology_id"
-          @input="handleChange('technology_id', $event)"
-          :options="foods"
           required
-        ></b-form-select>
+          @input="handleChangeValue('technology_id', $event)"
+        >
+          <b-form-select-option value="">Please select an option</b-form-select-option>
+          <b-form-select-option
+            v-for="technology in technologies"
+            :value="technology.id"
+            :key="technology.id"
+          >
+            {{ technology.name }}
+          </b-form-select-option>
+        </b-form-select>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">{{ btnSubmitText }}</b-button>
+      <b-button
+        type="submit"
+        :disabled="isBtnDisabled"
+        @click.prevent="createOrUpdate"
+        variant="primary"
+      >
+        {{ btnSubmitText }}
+        <b-spinner v-if="isBtnDisabled" small label="Spinning" />
+      </b-button>
     </b-form>
   </div>
 </template>
@@ -34,17 +50,24 @@ export default {
       type: Object,
       default: () => {},
     },
-    foods: {
+    technologies: {
       type: Array,
-      default: () => {},
+      default: () => [],
     },
     btnSubmitText: {
       type: String,
     },
+    isBtnDisabled: {
+      type: Boolean,
+    },
   },
   methods: {
-    handleChange(name, value) {
-      this.$emit("onHandleChange", name, value);
+    handleChangeValue(name, value) {
+      this.$emit("onHandleChangeValue", name, value);
+    },
+    createOrUpdate() {
+      this.$emit("onCreateVehicles");
+      this.$emit("onUpdateVehicles");
     },
   },
 };

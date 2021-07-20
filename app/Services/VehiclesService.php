@@ -7,7 +7,7 @@ class VehiclesService
 {
     public function index()
     {
-        return Vehicles::paginate(3);
+        return Vehicles::paginate(5);
     }
 
     public function store($request)

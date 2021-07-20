@@ -5,14 +5,17 @@
         <b-form-input
           class=""
           :value="technology.name"
-          @input="handleChange('name', $event)"
+          @input="handleChangeValue('name', $event)"
           type="text"
           placeholder="Enter name"
           required
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">{{ btnSubmitText }}</b-button>
+      <b-button :disabled="isBtnDisabled" type="submit" @click.prevent="createOrUpdate" variant="primary">
+        {{ btnSubmitText }}
+        <b-spinner v-if="isBtnDisabled" small label="Spinning" />
+        </b-button>
     </b-form>
   </div>
 </template>
@@ -24,18 +27,21 @@ export default {
       type: Object,
       default: () => {},
     },
-    foods: {
-      type: Array,
-      default: () => {},
-    },
     btnSubmitText: {
-      type: String,
+      type: String
     },
+    isBtnDisabled:{
+      type: Boolean
+    }
   },
   methods: {
-    handleChange(name, value) {
-      this.$emit("onHandleChange", name, value);
+    handleChangeValue(name, value) {
+      this.$emit("onHandleChangeValue", name, value);
     },
+    createOrUpdate(){
+      this.$emit('onCreateTechnology')
+      this.$emit('onUpdateTechnology')
+    }
   },
 };
 </script>

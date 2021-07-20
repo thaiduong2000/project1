@@ -32,28 +32,24 @@ export default {
     };
   },
   created() {
-    this.getUser()
-    this.listRoles()
+    this.getUser();
+    this.listRoles();
   },
   methods: {
     handleChange(name, value) {
       this.user[name] = value;
     },
-
-    getUser(){
+    getUser() {
       axios
         .get(`/api/users/${this.$route.params.id}`)
         .then((response) => {
-          const { data } = response.data
+          const { data } = response.data;
           this.user = {
             name: data.name,
             password: "",
             id_role: data.id_role,
-          }
+          };
         })
-        .catch((err) => {
-          console.log(err);
-        });
     },
     listRoles() {
       axios
@@ -61,13 +57,9 @@ export default {
         .then((response) => {
           this.roles = response.data;
         })
-        .catch((err) => {
-          console.log(err);
-        });
     },
-
-    updateUser(){
-      this.isBtnDisabled = true
+    updateUser() {
+      this.isBtnDisabled = true;
       axios
         .put(`/api/users/${this.$route.params.id}`, {
           name: this.user.name,
@@ -80,7 +72,7 @@ export default {
         .catch((err) => {
           this.isBtnDisabled = false;
         });
-    }
+    },
   },
 };
 </script>

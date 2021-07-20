@@ -9,6 +9,10 @@
       :items="items"
       :fields="fields"
       :isBusy="isBusy"
+      :perPage="pagination.perPage"
+      :currentPage="pagination.currentPage"
+      :total="pagination.total"
+      @onHandleChangeCurrentPage="handleChangeCurrentPage"
       @onDeleteUser="deleteUser"
     />
   </div>
@@ -29,12 +33,10 @@ export default {
         },
         {
           key: "name",
-          sortable: true,
         },
         {
           key: "id_role",
           label: "Roles",
-          sortable: true,
         },
         {
           key: "action",
@@ -42,26 +44,41 @@ export default {
         },
       ],
       items: [],
+      roles: [],
+      pagination: {
+        perPage: 0,
+        currentPage: 1,
+        total: 0,
+      },
       isBusy: false,
     };
   },
   created() {
-    this.getUser();
+    this.listUsers();
   },
   methods: {
-    getUser() {
+    handleChangeCurrentPage(value) {
+      this.currentPage = value;
+      this.listUsers();
+    },
+    listUsers() {
       this.isBusy = !this.isBusy;
       axios
-        .get(`/api/users`)
+        .get(`/api/users?page=` + this.currentPage)
         .then((response) => {
-          this.items = response.data.data;
-          this.isBusy = !this.isBusy;
+          const { data, meta } = response.data;
+          this.items = data;
+          this.pagination = {
+            perPage: meta.per_page,
+            currentPage: meta.current_page,
+            total: meta.total,
+          };
+          this.isBusy = false;
         })
         .catch((err) => {
           console.log(err);
         });
     },
-
     deleteUser(id) {
       this.$bvModal
         .msgBoxConfirm("Are you sure delete user?", {
@@ -78,7 +95,7 @@ export default {
         .then((value) => {
           if (value == true) {
             axios.delete(`/api/users/` + id).then((res) => {
-              this.getUser();
+              this.listUsers();
             });
           }
         });
